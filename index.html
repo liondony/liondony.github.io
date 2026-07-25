@@ -84,16 +84,16 @@
     </header>
 
     <div class="card-container">
-        <div class="card">
-            <a href="work.html">
+        <div class="card" onclick="openWorkDoc()">
+            <div>
                 <h2>📁 工作文档</h2>
-                <p>各类工作资料、方案、记录汇总</p>
-            </a>
+                <p>各类工作资料、方案、记录汇总（需密码访问）</p>
+            </div>
         </div>
         <div class="card">
             <a href="study.html">
                 <h2>📚 个人学习</h2>
-                <p>学习笔记、知识文档、思维导图汇总</p>
+                <p>学习笔记、知识文档、思维资料汇总</p>
             </a>
         </div>
     </div>
@@ -102,5 +102,16 @@
         © Liondony Personal Website
     </footer>
 </div>
+
+<script>
+function openWorkDoc(){
+    let pwd = prompt("请输入访问密码：");
+    if(pwd === "tmfj728"){
+        location.href = "work.html";
+    }else if(pwd !== null){
+        alert("密码错误！");
+    }
+}
+</script>
 </body>
 </html>
