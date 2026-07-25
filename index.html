@@ -23,7 +23,7 @@
         }
         header {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 48px;
         }
         h1 {
             font-size: 2.3rem;
@@ -35,48 +35,42 @@
             color: #94a3b8;
             font-size: 1rem;
         }
-        .box {
+        .card-container {
+            display: grid;
+            gap: 24px;
+        }
+        .card {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 16px;
-            padding: 32px;
+            padding: 36px;
+            transition: 0.25s ease;
+            cursor: pointer;
         }
-        .box-title {
-            font-size: 1.3rem;
-            margin-bottom: 20px;
-            padding-bottom: 12px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            display: flex;
-            align-items: center;
-            gap: 8px;
+        .card:hover {
+            background: rgba(255,255,255,0.09);
+            transform: translateY(-4px);
+            border-color: rgba(255,255,255,0.18);
         }
-        .file-list {
-            list-style: none;
-        }
-        .file-item {
-            padding: 14px 16px;
-            border-radius: 10px;
-            transition: 0.24s ease;
-            margin-bottom: 8px;
-        }
-        .file-item:hover {
-            background: rgba(255,255,255,0.08);
-        }
-        .file-item a {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            color: #e2e8f0;
+        .card a {
             text-decoration: none;
-            font-size: 1.02rem;
+            color: inherit;
+            display:block;
         }
-        .icon {
-            font-size: 18px;
-            color: #60a5fa;
+        .card h2 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            display:flex;
+            align-items:center;
+            gap:10px;
+        }
+        .card p {
+            color:#94a3b8;
+            line-height:1.6;
         }
         footer {
             text-align: center;
-            margin-top: 48px;
+            margin-top: 60px;
             color: #64748b;
             font-size: 0.86rem;
         }
@@ -86,43 +80,22 @@
 <div class="wrap">
     <header>
         <h1>Welcome to Liondony's website</h1>
-        <p class="subtitle">Personal Work Document Library</p>
+        <p class="subtitle">Personal Document Library</p>
     </header>
 
-    <div class="box">
-        <div class="box-title">📁 工作文档</div>
-        <ul class="file-list">
-            <!-- 新增文档直接复制下面整行修改 -->
-
-                 <li class="file-item">
-                <a href="梁文锋DeepSeek投资者交流会.html">
-                    <span class="icon">📄</span>
-                    <span>梁文锋DeepSeek投资者交流会</span>
-                </a>
-            </li>
-            
-            <li class="file-item">
-                <a href="顶层人士36个顶级思维.html">
-                    <span class="icon">📄</span>
-                    <span>顶层人士36个顶级思维</span>
-                </a>
-            </li>
-            <li class="file-item">
-                <a href="天门纺机私有化AI大模型解决方案.html">
-                    <span class="icon">📄</span>
-                    <span>私有化AI大模型解决方案</span>
-                </a>
-            </li>
-            
-            <!-- 复制模板示例
-            <li class="file-item">
-                <a href="xxx.html">
-                    <span class="icon">📄</span>
-                    <span>文档名称</span>
-                </a>
-            </li>
-            -->
-        </ul>
+    <div class="card-container">
+        <div class="card">
+            <a href="work.html">
+                <h2>📁 工作文档</h2>
+                <p>各类工作资料、方案、记录汇总</p>
+            </a>
+        </div>
+        <div class="card">
+            <a href="study.html">
+                <h2>📚 个人学习</h2>
+                <p>学习笔记、知识文档、思维资料汇总</p>
+            </a>
+        </div>
     </div>
 
     <footer>
