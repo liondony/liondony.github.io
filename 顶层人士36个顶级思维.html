@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <!-- 手机自适应核心标签 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>顶层人士36个顶级思维 | 完整版思维导图</title>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Microsoft YaHei", sans-serif;
+    }
+    body {
+      background: linear-gradient(145deg, #f0f4fd, #e8f0fc);
+      color: #2d3748;
+      padding: 16px;
+      line-height: 1.75;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .page-header {
+      text-align: center;
+      padding: 30px 20px;
+      background: linear-gradient(135deg, #2563eb, #4f46e5);
+      color: #fff;
+      border-radius: 18px;
+      margin-bottom: 24px;
+      box-shadow: 0 8px 24px rgba(37, 99, 235, 0.2);
+    }
+    .page-header h1 {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+    .page-header p {
+      opacity: 0.9;
+      font-size: 14px;
+    }
+    /* 顶部导航目录 */
+    .nav-box {
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 16px;
+      margin-bottom: 24px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+    .nav-box h3 {
+      font-size: 16px;
+      margin-bottom: 12px;
+      color: #1e40af;
+    }
+    .nav-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+    }
+    @media (min-width: 600px) {
+      .nav-list {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    .nav-list a {
+      display: block;
+      padding: 8px 10px;
+      text-align: center;
+      background: #eff6ff;
+      color: #2563eb;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 13px;
+      transition: all 0.2s;
+    }
+    .nav-list a:hover {
+      background: #2563eb;
+      color: white;
+    }
+    /* 大模块容器 */
+    .big-module {
+      background: #fff;
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+      overflow: hidden;
+    }
+    .module-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #e2e8f0;
+      cursor: pointer;
+      user-select: none;
+    }
+    .module-title h2 {
+      font-size: 18px;
+      color: #1d4ed8;
+    }
+    .toggle-btn {
+      width: 28px;
+      height: 28px;
+      line-height: 28px;
+      text-align: center;
+      border-radius: 50%;
+      background: #eff6ff;
+      color: #2563eb;
+      font-weight: bold;
+    }
+    .module-content {
+      padding-top: 16px;
+      display: block;
+    }
+    /* 每一条思维卡片 */
+    .think-card {
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 14px;
+      background-color: #fbfdff;
+    }
+    .think-card h3 {
+      color: #c2410c;
+      font-size: 16px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+    }
+    .think-card h3 span {
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      line-height: 24px;
+      text-align: center;
+      background: #fed7aa;
+      color: #c2410c;
+      border-radius: 6px;
+      margin-right: 8px;
+      font-size: 13px;
+    }
+    .think-card p {
+      font-size: 14px;
+      margin: 6px 0;
+    }
+    .think-card strong {
+      color: #1e293b;
+    }
+    /* 舒适区拓展板块 */
+    .extra-box {
+      background: #fff;
+      border-radius: 16px;
+      padding: 22px;
+      margin-top: 30px;
+      box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+    }
+    .extra-box h2 {
+      color: #047857;
+      margin-bottom: 16px;
+      font-size: 19px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #d1fae5;
+    }
+    .level-title {
+      color: #059669;
+      font-weight: bold;
+      margin: 14px 0 8px;
+      font-size: 15px;
+    }
+    ul.list-item {
+      padding-left: 20px;
+      font-size: 14px;
+    }
+    ul.list-item li {
+      margin: 6px 0;
+    }
+    /* 底部备注 */
+    .footer-tips {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 13px;
+      color: #64748b;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <!-- 头部标题 -->
+  <div class="page-header">
+    <h1>顶层人士的36个顶级思维</h1>
+    <p>向内破局 | 积累财富 | 理性决策 | 通晓人性 | 高效成事 | 长期格局</p>
+  </div>
+
+  <!-- 顶部导航目录 -->
+  <div class="nav-box">
+    <h3>快速目录导航</h3>
+    <div class="nav-list">
+      <a href="#m1">一、自我认知破局</a>
+      <a href="#m2">二、财富复利思维</a>
+      <a href="#m3">三、决策概率思维</a>
+      <a href="#m4">四、人际人性思维</a>
+      <a href="#m5">五、职场高效思维</a>
+      <a href="#m6">六、长期周期思维</a>
+    </div>
+  </div>
+
+  <!-- 模块1 自我认知·破局思维 -->
+  <div class="big-module" id="m1">
+    <div class="module-title">
+      <h2>一、自我认知·破局思维（6条）</h2>
+      <div class="toggle-btn">-</div>
+    </div>
+    <div class="module-content">
+      <div class="think-card">
+        <h3><span>1</span>跳蚤效应</h3>
+        <p><strong>底层原理：</strong>跳蚤原本可以跳很高，长期被玻璃罩限制高度后，即便拿走盖子，也不敢再跳高，内心给自己划定永久边界。</p>
+        <p><strong>普通人误区：</strong>过往失败、他人否定带来心理枷锁，习惯性认定“我不行”，不断缩小自己的人生可能性。</p>
+        <p><strong>行动方法：</strong>分清客观能力上限和心理设限；定期挑战舒适区小事；一次失败不能定义终身能力。</p>
+        <p><strong>适用场景：</strong>求职、学新技能、跨界转行、克服内心胆怯</p>
+      </div>
+      <div class="think-card">
+        <h3><span>2</span>终局倒推思维（以终为始）</h3>
+        <p><strong>底层原理：</strong>普通人走一步看一步；高手先确定5-10年后理想人生，反向拆解每年、每月、每日必须完成的事。</p>
+        <p><strong>普通人误区：</strong>目标模糊，被琐事裹挟忙碌，做事没有优先级，常年原地打转。</p>
+        <p><strong>行动方法：</strong>具象化人生终极目标；提前预判路上阻碍；舍弃一切无关长期目标的事情。</p>
+        <p><strong>适用场景：</strong>职业规划、创业、财富储蓄、人生整体规划</p>
+      </div>
+      <div class="think-card">
+        <h3><span>3</span>认知重构思维</h3>
+        <p><strong>底层原理：</strong>紧张和兴奋的身体体征完全一致（心跳快、手心出汗），大脑可以自主切换情绪解读。</p>
+        <p><strong>普通人误区：</strong>面试、演讲、谈判前满心恐惧，行动力大幅下降。</p>
+        <p><strong>行动方法：</strong>紧张时暗示自己：身体正在蓄力备战；提前心理预演；把压力看作机遇。</p>
+        <p><strong>适用场景：</strong>公开讲话、面试、商务谈判、各类竞技比拼</p>
+      </div>
+      <div class="think-card">
+        <h3><span>4</span>内存释放减法思维</h3>
+        <p><strong>底层原理：</strong>大脑认知带宽有限，碎片化信息、繁杂选择、无效社交会持续消耗专注力。</p>
+        <p><strong>普通人误区：</strong>不停刷短视频、纠结日常小事，大脑长期疲惫，大事无法专注。</p>
+        <p><strong>行动方法：</strong>信息减法、穿搭作息固定化、远离消耗型朋友、砍掉低价值琐事。</p>
+        <p><strong>适用场景：</strong>时间管理、自律学习、高效工作</p>
+      </div>
+      <div class="think-card">
+        <h3><span>5</span>第一性原理</h3>
+        <p><strong>底层原理：</strong>抛开经验、行业惯例、大众跟风，剥离所有表象，回归事物最基础本质重新设计方案。</p>
+        <p><strong>普通人误区：</strong>一味照搬别人经验，只会微调，无法做出颠覆性结果。</p>
+        <p><strong>行动方法：</strong>拆解核心底层要素；打破固有套路；重新搭配资源降本增效。</p>
+        <p><strong>经典案例：</strong>马斯克打造火箭、特斯拉电动车</p>
+      </div>
+      <div class="think-card">
+        <h3><span>6</span>幸存者偏差思维</h3>
+        <p><strong>底层原理：</strong>人们只能看到成功的人，大量失败者被隐藏，单纯模仿成功者极易踩坑。</p>
+        <p><strong>普通人误区：</strong>羡慕网红、暴富创业者，盲目复制路径，忽视失败教训。</p>
+        <p><strong>行动方法：</strong>同时研究成功与失败案例；区分运气和硬实力；多角度权衡再决策。</p>
+        <p><strong>适用场景：</strong>投资理财、选行业、创业开店</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 模块2 -->
+  <div class="big-module" id="m2">
+    <div class="module-title">
+      <h2>二、财富成长·复利思维（6条）</h2>
+      <div class="toggle-btn">-</div>
+    </div>
+    <div class="module-content">
+      <div class="think-card">
+        <h3><span>7</span>复利效应</h3>
+        <p><strong>核心：</strong>微小积累随时间指数增长，认知、人脉、资产都具备复利属性。急于赚快钱的人，永远拿不到后期爆发收益。</p>
+        <p><strong>行动：</strong>每日稳定输入，长期坚持不中断。</p>
+      </div>
+      <div class="think-card">
+        <h3><span>8</span>资产思维</h3>
+        <p><strong>核心：</strong>分清消费支出与增值资产；工资优先购置能产生被动收入的资产，减少透支享乐消费，摆脱只靠薪水生存。</p>
+      </div>
+      <div class="think-card">
+        <h3><span>9</span>杠杆思维</h3>
+        <p><strong>核心：</strong>个人时间上限固定，学会借用人力、资金、平台、认知杠杆放大收益，不再单纯出卖体力赚钱。</p>
+      </div>
+      <div class="think-card">
+        <h3><span>10</span>机会成本思维</h3>
+        <p><strong>核心：</strong>选择一件事，就必然放弃其他选择的收益；时间是最贵成本，不要浪费在低价值琐事上。</p>
+      </div>
+      <div class="think-card">
+        <h3><span>11</span>沉没成本思维</h3>
+        <p><strong>核心：</strong>已经花出去的时间、金钱无法收回，不得因为舍不得过去，持续亏损；提前设置止损线，及时离场。</p>
+      </div>
+      <div class="think-card">
+        <h3><span>12</span>马太效应</h3>
+        <p><strong>核心：</strong>强者愈强、弱者愈弱；先打造一处自身优势，资源、机会会自动向你聚拢，不断拉开差距。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 模块3 -->
+  <div class="big-module" id="m3">
+    <div class="module-title">
+      <h2>三、决策判断·概率思维（6条）</h2>
+      <div class="toggle-btn">-</div>
+    </div>
+    <div class="module-content">
+      <div class="think-card">
+        <h3><span>13</span>二八定律</h3>
+        <p>80%收益来自20%核心事情；精力集中投入关键板块，其余琐事简化、外包或舍弃。</p>
+      </div>
+      <div class="think-card">
+        <h3><span>14</span>正期望值胜率思维</h3>
+        <p>不必每一次选择都赢，只要长期整体收益为正向即可；分散布局抵御单次失败风险。</p>
+      </div>
+      <div class="think-card">
+        <h3><span>15</span>奥卡姆剃刀原理</h3>
+        <p>如无必要，勿增实体；最简单的逻辑往往最贴近真相，持续精简流程、去掉冗余环节。</p>
+      </div>
+      <div class="think-card">
+        <h3><span>16</span>黑天鹅思维</h3>
+        <p>预留资金与生存退路，不把全部资产押注单一渠道，提前应对不可预测的突发危机。</p>
+      </div>
+      <div class="think-card">
+        <h3><span>17</span>逆向思维</h3>
+        <p>正向思考只能看见常规道路；反向推演失败原因提前规避，危机里挖掘别人看不到的机遇。</p>
+      </div>
+      <div class="think-card">
+        <h3><span>18</span>绿灯思维</h3>
+        <p>遇到不同观点先吸收可取之处，不要立刻反驳否定；打破信息茧房，保持认知开放。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 模块4 -->
+  <div class="big-module" id="m4">
+    <div class="module-title">
+      <h2>四、人际管理·人性思维（6条）</h2>
+      <div class="toggle-btn">-</div>
+    </div>
+    <div class="module-content">
+      <div class="think-card">
+        <h3><span>19</span>位差效应</h3>
+        <p>层级差距会隔绝真话；放下身份架子平等沟通，才能听到团队、身边人最真实的想法。</p>
+      </div>
+      <div class="think-card">
+        <h3><span>20</span>利他思维</h3>
+        <p>持续给他人提供价值，信任、人脉、资源自然向你汇聚；长久来看，利他就是利己。</p>
+      </div>
+      <div class="think-card">
+        <h3><span>21</span>分钱共赢思维</h3>
+        <p>财散人聚；懂得分配收益给伙伴与员工，才能留住人才，事业持续做大。</p>
+      </div>
+      <div class="think-card">
+        <h3><span>22</span>奥格威法则</h3>
+        <p>管理者敢于任用比自己能力更强的人，团队整体上限才会不断提升。</p>
+      </div>
+      <div class="think-card">
+        <h3><span>23</span>磨合效应</h3>
+        <p>新团队、新人际关系初期必然存在摩擦，统一目标度过磨合期后，协作效率会大幅提升。</p>
+      </div>
+      <div class="think-card">
+        <h3><span>24</span>避雷针效应</h3>
+        <p>矛盾和负面情绪不要强行压制，及时疏导化解，避免小问题积攒爆发成巨大冲突。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 模块5 -->
+  <div class="big-module" id="m5">
+    <div class="module-title">
+      <h2>五、职场成事·高效思维（6条）</h2>
+      <div class="toggle-btn">-</div>
+    </div>
+    <div class="module-content">
+      <div class="think-card">
+        <h3><span>25</span>模块化拆解思维</h3>
+        <p>宏大目标容易让人焦虑拖延；拆分为每日微小任务，循序渐进落地，不断获得正向反馈。</p>
+      </div>
+      <div class="think-card">
+        <h3><span>26</span>目标置换效应</h3>
+        <p>拒绝用熬夜加班的忙碌自我感动，所有工作围绕最终结果落地，过程形式不重要。</p>
+      </div>
+      <div class="think-card">
+        <h3><span>27</span>布里斯定律</h3>
+        <p>做事前完整规划，可以规避80%执行中的意外问题，减少反复返工带来的时间浪费。</p>
+      </div>
+      <div class="think-card">
+        <h3><span>28</span>单点突破思维</h3>
+        <p>资源精力有限，不要多线并行样样浅尝辄止；集中力量攻破一个关键点，先建立局部优势。</p>
+      </div>
+      <div class="think-card">
+        <h3><span>29</span>四象限清单思维</h3>
+        <p>按照轻重缓急划分事务，优先处理重要不紧急的成长类事情，杜绝琐事占用成长时间。</p>
+      </div>
+      <div class="think-card">
+        <h3><span>30</span>截止日期生产力</h3>
+        <p>无期限的任务会无限拖延；给每件事设置硬性完成节点，倒逼自己高效执行。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 模块6 -->
+  <div class="big-module" id="m6">
+    <div class="module-title">
+      <h2>六、长期格局·周期思维（6条）</h2>
+      <div class="toggle-btn">-</div>
+    </div>
+    <div class="module-content">
+      <div class="think-card">
+        <h3><span>31</span>周期规律思维</h3>
+        <p>行业、财富、人生都有兴衰周期；繁荣时不贪婪冒进，低谷时默默蓄力沉淀，顺势而为。</p>
+      </div>
+      <div class="think-card">
+        <h3><span>32</span>稀缺思维</h3>
+        <p>大众化技能极易内卷；打磨稀缺、不可替代的能力与资源，掌握收入和选择的主动权。</p>
+      </div>
+      <div class="think-card">
+        <h3><span>33</span>反脆弱思维</h3>
+        <p>不要一味追求绝对安稳；在环境波动中锻炼自己，多渠道布局抵御风险，越动荡越强大。</p>
+      </div>
+      <div class="think-card">
+        <h3><span>34</span>延迟满足思维</h3>
+        <p>克制短视频、玩乐等短期即时快感，把时间投入长期复利事情，未来收获成倍回报。</p>
+      </div>
+      <div class="think-card">
+        <h3><span>35</span>空船理论（情绪ABC）</h3>
+        <p>伤害你的从来不是客观事件，而是你看待事情的心态；稳住内心内核，不被外界轻易牵动情绪。</p>
+      </div>
+      <div class="think-card">
+        <h3><span>36</span>长期主义思维</h3>
+        <p>选定一个赛道深耕3-5年，不要频繁更换方向；日积月累构筑个人壁垒，慢就是快。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 附加：挑战舒适区小事清单 -->
+  <div class="extra-box">
+    <h2>附加：循序渐进挑战舒适区 日常小事清单</h2>
+    <div class="level-title">🔹 轻度入门（新手零压力）</div>
+    <ul class="list-item">
+      <li>上下班更换行走路线，不常年走同一条路</li>
+      <li>主动和店员、外卖员礼貌多说一句话</li>
+      <li>尝试一道从没吃过的饭菜</li>
+      <li>关掉短视频娱乐，每天静心读书15分钟</li>
+      <li>早起30分钟，打破熬夜赖床惯性</li>
+    </ul>
+    <div class="level-title">🔹 中度进阶（突破内向胆怯）</div>
+    <ul class="list-item">
+      <li>当众简单分享一段感悟</li>
+      <li>主动结识一位同领域新朋友</li>
+      <li>拒绝自己不想做的请求，学会委婉说不</li>
+      <li>独自看电影、逛街、吃饭</li>
+      <li>学习一项完全陌生的小技能（拍照、剪辑、练字）</li>
+    </ul>
+    <div class="level-title">🔹 深度突破（彻底打破自我设限）</div>
+    <ul class="list-item">
+      <li>报名演讲、比赛类公开活动</li>
+      <li>主动向上级提出工作优化方案</li>
+      <li>尝试副业、自媒体，从零开启一件新事</li>
+      <li>独自短途旅行规划全程行程</li>
+      <li>直面自己害怕的短板，刻意练习补齐</li>
+    </ul>
+  </div>
+
+  <!-- 底部备注 -->
+  <div class="footer-tips">
+    每日复盘一点思维，慢慢提升认知格局 · 本地离线阅读
+  </div>
+</div>
+
+<script>
+// 模块折叠展开交互
+$(".module-title").click(function(){
+  let content = $(this).next(".module-content");
+  let btn = $(this).find(".toggle-btn");
+  content.slideToggle(250);
+  btn.text(content.is(":visible") ? "-" : "+");
+})
+</script>
+</body>
+</html>
