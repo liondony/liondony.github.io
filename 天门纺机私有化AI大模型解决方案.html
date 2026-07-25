@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <!-- 手机强制适配，禁止缩放 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>天门纺机私有化AI大模型解决方案</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#165DFF',
+                        dark: '#1D2939',
+                        light: '#F9FAFB',
+                        cyan: '#36CFC9',
+                        orange: '#FF7D00',
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .gradient-top {
+                background: linear-gradient(135deg, #165DFF, #36CFC9);
+            }
+            .card-shadow {
+                box-shadow: 0 2px 12px rgba(22, 93, 255, 0.07);
+            }
+        }
+        /* 全局优化手机字体行距 */
+        body {
+            line-height: 1.75;
+        }
+        /* 表格手机滚动 */
+        .table-wrap {
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-dark text-sm">
+    <!-- 顶部标题 -->
+    <header class="gradient-top text-white px-4 py-6">
+        <h1 class="text-xl font-bold flex items-center gap-2">
+            <i class="fa fa-industry text-2xl"></i>
+            天门纺机私有化AI大模型解决方案
+        </h1>
+        <p class="mt-2 text-xs opacity-90">本地化多模型企业私有化AI智能平台</p>
+    </header>
+
+    <div class="px-3 py-4 max-w-full">
+        <!-- 折叠式导航（手机全屏展示） -->
+        <details open class="bg-white rounded-lg card-shadow p-4 mb-5">
+            <summary class="font-bold text-primary text-base cursor-pointer">
+                <i class="fa fa-list-ul mr-2"></i>目录导航
+            </summary>
+            <nav class="mt-3 grid grid-cols-1 gap-2 text-xs">
+                <a href="#p1" class="py-1.5 px-2 rounded bg-blue-50 text-primary">一、方案概述</a>
+                <a href="#p2" class="py-1.5 px-2 rounded bg-blue-50 text-primary">二、硬件架构与网络</a>
+                <a href="#p3" class="py-1.5 px-2 rounded bg-blue-50 text-primary">三、多模型体系设计</a>
+                <a href="#p4" class="py-1.5 px-2 rounded bg-blue-50 text-primary">四、L20显卡算力分配</a>
+                <a href="#p5" class="py-1.5 px-2 rounded bg-blue-50 text-primary">五、平台核心业务能力</a>
+                <a href="#p6" class="py-1.5 px-2 rounded bg-blue-50 text-primary">六、32B/70B模型对比</a>
+                <a href="#p7" class="py-1.5 px-2 rounded bg-blue-50 text-primary">七、方案核心优势</a>
+                <a href="#p8" class="py-1.5 px-2 rounded bg-blue-50 text-primary">八、分级扩展规划</a>
+                <a href="#p9" class="py-1.5 px-2 rounded bg-blue-50 text-primary">九、方案总结</a>
+            </nav>
+        </details>
+
+        <!-- 正文内容 -->
+        <main class="space-y-5">
+            <!-- 1 方案概述 -->
+            <section id="p1" class="bg-white rounded-lg card-shadow p-4">
+                <h2 class="text-base font-bold text-primary border-b pb-2 mb-3">
+                    <i class="fa fa-file-text-o mr-1"></i>一、方案概述
+                </h2>
+                <p class="text-gray-700">
+                    本方案依托天门纺机现有IT硬件：2台超融合存储服务器+1台4×L20 48GB AI算力服务器，搭建本地私有化多模型AI平台。采用2+2双卡分组算力，以DeepSeek32B为核心，联动通义千问、豆包形成多模型调度体系。
+                </p>
+                <p class="mt-2 text-gray-700">
+                    全内网闭环数据，覆盖工业研发、生产运维、OA办公全场景，包含知识库问答、数值计算、代码辅助、自动报表等功能，安全可控、易扩展。
+                </p>
+            </section>
+
+            <!-- 2 硬件架构 -->
+            <section id="p2" class="bg-white rounded-lg card-shadow p-4">
+                <h2 class="text-base font-bold text-primary border-b pb-2 mb-3">
+                    <i class="fa fa-server mr-1"></i>二、整体硬件架构与网络拓扑
+                </h2>
+                <h3 class="font-semibold text-base mb-2">2.1 硬件组成</h3>
+                <div class="space-y-3">
+                    <div class="bg-blue-50 p-3 rounded border-l-2 border-primary">
+                        <div class="font-semibold text-xs">业务存储层</div>
+                        <p class="text-xs mt-1">2台超融合服务器，承载ERP/MES/PLM/OA、数据库、图纸库、向量知识库</p>
+                    </div>
+                    <div class="bg-cyan-50 p-3 rounded border-l-2 border-cyan">
+                        <div class="font-semibold text-xs">AI算力层</div>
+                        <p class="text-xs mt-1">4×L20 48GB服务器，负责模型推理、微调、算力调度</p>
+                    </div>
+                </div>
+                <div class="bg-gray-100 p-3 rounded mt-3">
+                    <div class="font-semibold text-xs">网络架构</div>
+                    <p class="text-xs mt-1">万兆内网，业务/存储/算力三网隔离，AI计算本地闭环、不上公网、无token费用</p>
+                </div>
+
+                <h3 class="font-semibold text-base mt-4 mb-2">2.3 四层分层架构</h3>
+                <ul class="space-y-2 text-xs">
+                    <li>① 数据底座层：统一汇聚企业全部生产、研发、办公私有数据</li>
+                    <li>② 模型调度层：自动路由匹配最优大模型</li>
+                    <li>③ 算力推理层：2+2分组算力，支持并发与夜间微调</li>
+                    <li>④ 业务应用层：工业AI+办公AI一体化赋能</li>
+                </ul>
+            </section>
+
+            <!-- 3 多模型体系 -->
+            <section id="p3" class="bg-white rounded-lg card-shadow p-4">
+                <h2 class="text-base font-bold text-primary border-b pb-2 mb-3">
+                    <i class="fa fa-cubes mr-1"></i>三、多模型体系设计
+                </h2>
+                <div class="space-y-3">
+                    <div class="border p-3 rounded">
+                        <div class="font-bold text-primary">DeepSeek 32B</div>
+                        <p class="text-xs mt-1">工业推理、故障分析、数学建模、代码开发主力</p>
+                    </div>
+                    <div class="border p-3 rounded">
+                        <div class="font-bold text-cyan">通义千问</div>
+                        <p class="text-xs mt-1">公文解读、长文本总结、OA制度流程解析</p>
+                    </div>
+                    <div class="border p-3 rounded">
+                        <div class="font-bold text-orange">豆包模型</div>
+                        <p class="text-xs mt-1">日常问答、数据统计、自动报表、员工咨询</p>
+                    </div>
+                </div>
+                <div class="bg-gray-50 p-3 rounded mt-4 text-xs space-y-2">
+                    <p>工业计算/代码 → DeepSeek32B</p>
+                    <p>公文/OA制度 → 通义千问</p>
+                    <p>日常问答/报表 → 豆包</p>
+                </div>
+            </section>
+
+            <!-- 4 算力分配 -->
+            <section id="p4" class="bg-white rounded-lg card-shadow p-4">
+                <h2 class="text-base font-bold text-primary border-b pb-2 mb-3">
+                    <i class="fa fa-microchip mr-1"></i>四、4×L20显卡算力分配
+                </h2>
+                <p class="text-xs mb-3">采用2+2双卡分组TP=2张量并行，双算力组热备高可用</p>
+                <div class="space-y-3">
+                    <div class="bg-blue-50 p-3 rounded">
+                        <div class="font-semibold text-xs">GPU0+GPU1 主力组</div>
+                        <p class="text-xs mt-1">常驻DeepSeek32B+千问，7×24小时支撑工业生产、OA问答</p>
+                    </div>
+                    <div class="bg-cyan-50 p-3 rounded">
+                        <div class="font-semibold text-xs">GPU2+GPU3 冗余微调组</div>
+                        <p class="text-xs mt-1">豆包报表交互+备用32B；日间分流，夜间LoRA微调</p>
+                    </div>
+                </div>
+                <div class="mt-4 flex flex-wrap gap-2 text-xs">
+                    <span class="px-2 py-1 bg-blue-100 rounded">多模型同时在线</span>
+                    <span class="px-2 py-1 bg-blue-100 rounded">算力隔离互不抢占</span>
+                    <span class="px-2 py-1 bg-blue-100 rounded">故障自动切换</span>
+                    <span class="px-2 py-1 bg-blue-100 rounded">支持升级70B</span>
+                </div>
+            </section>
+
+            <!-- 5 核心能力 -->
+            <section id="p5" class="bg-white rounded-lg card-shadow p-4">
+                <h2 class="text-base font-bold text-primary border-b pb-2 mb-3">
+                    <i class="fa fa-star mr-1"></i>五、平台核心业务能力
+                </h2>
+                <div class="space-y-4 text-xs">
+                    <div class="flex gap-3">
+                        <span class="w-7 h-7 rounded-full bg-primary text-white text-center shrink-0">1</span>
+                        <div>
+                            <div class="font-semibold">工业工艺知识库问答</div>
+                            <p class="mt-1 text-gray-600">设备故障、工艺参数、装配流程智能检索</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-3">
+                        <span class="w-7 h-7 rounded-full bg-cyan text-white text-center shrink-0">2</span>
+                        <div>
+                            <div class="font-semibold">数字化数学模型计算</div>
+                            <p class="mt-1 text-gray-600">工艺优化、物料损耗、生产成本测算复盘</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-3">
+                        <span class="w-7 h-7 rounded-full bg-orange text-white text-center shrink-0">3</span>
+                        <div>
+                            <div class="font-semibold">研发运维代码辅助</div>
+                            <p class="mt-1 text-gray-600">自动生成脚本、数据清洗、接口代码、漏洞检测</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-3">
+                        <span class="w-7 h-7 rounded-full bg-indigo-500 text-white text-center shrink-0">4</span>
+                        <div>
+                            <div class="font-semibold">OA知识库智能问答</div>
+                            <p class="mt-1 text-gray-600">制度解读、公文摘要、报销考勤、审批流程查询</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 6 模型对比 -->
+            <section id="p6" class="bg-white rounded-lg card-shadow p-4">
+                <h2 class="text-base font-bold text-primary border-b pb-2 mb-3">
+                    <i class="fa fa-balance-scale mr-1"></i>六、32B/70B模型对比
+                </h2>
+                <div class="grid grid-cols-2 gap-3 mb-4 text-xs">
+                    <div class="bg-blue-50 p-3 rounded">
+                        <div class="font-semibold">32B（主力）</div>
+                        <p class="mt-1">2卡即可运行、高并发、低成本微调，覆盖95%场景</p>
+                    </div>
+                    <div class="bg-orange-50 p-3 rounded">
+                        <div class="font-semibold">70B（升级）</div>
+                        <p class="mt-1">深度推理更强，需4卡，用于高阶工艺仿真分析</p>
+                    </div>
+                </div>
+                <div class="table-wrap">
+                    <table class="w-full text-xs border-collapse">
+                        <thead>
+                            <tr class="bg-primary text-white">
+                                <th class="border p-2">维度</th>
+                                <th class="border p-2">32B</th>
+                                <th class="border p-2">70B</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-gray-700">
+                            <tr>
+                                <td class="border p-2 font-semibold">并发</td>
+                                <td class="border p-2">高、低延迟</td>
+                                <td class="border p-2">低、高消耗</td>
+                            </tr>
+                            <tr>
+                                <td class="border p-2 font-semibold">微调成本</td>
+                                <td class="border p-2">低，夜间运行</td>
+                                <td class="border p-2">高，占用全部算力</td>
+                            </tr>
+                            <tr>
+                                <td class="border p-2 font-semibold">适用</td>
+                                <td class="border p-2">日常办公+常规工业</td>
+                                <td class="border p-2">复杂工艺、智能体</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- 7 方案优势 -->
+            <section id="p7" class="bg-white rounded-lg card-shadow p-4">
+                <h2 class="text-base font-bold text-primary border-b pb-2 mb-3">
+                    <i class="fa fa-trophy mr-1"></i>七、方案核心优势
+                </h2>
+                <ul class="space-y-2 text-xs">
+                    <li class="flex gap-2"><i class="fa fa-check text-primary shrink-0 mt-0.5"></i>多模型互补，消除单一模型短板</li>
+                    <li class="flex gap-2"><i class="fa fa-check text-primary shrink-0 mt-0.5"></i>生产+行政办公全业务覆盖</li>
+                    <li class="flex gap-2"><i class="fa fa-check text-primary shrink-0 mt-0.5"></i>2+2均衡算力，高冗余高并发</li>
+                    <li class="flex gap-2"><i class="fa fa-check text-primary shrink-0 mt-0.5"></i>复用现有硬件，降低投入成本</li>
+                    <li class="flex gap-2"><i class="fa fa-check text-primary shrink-0 mt-0.5"></i>可平滑升级70B、多模态、工业智能体</li>
+                </ul>
+            </section>
+
+            <!-- 8 扩展规划 -->
+            <section id="p8" class="bg-white rounded-lg card-shadow p-4">
+                <h2 class="text-base font-bold text-primary border-b pb-2 mb-3">
+                    <i class="fa fa-line-chart mr-1"></i>八、分级扩展性设计
+                </h2>
+                <div class="space-y-4 text-xs">
+                    <div class="border-l-3 border-primary pl-3">
+                        <div class="font-semibold">短期扩展</div>
+                        <ul class="list-disc pl-4 mt-1 space-y-1">
+                            <li>企业专属垂类模型微调</li>
+                            <li>自动化报表、OA流程升级</li>
+                        </ul>
+                    </div>
+                    <div class="border-l-3 border-cyan pl-3">
+                        <div class="font-semibold">中期扩展</div>
+                        <ul class="list-disc pl-4 mt-1 space-y-1">
+                            <li>4卡部署70B大模型</li>
+                            <li>图纸、图片多模态识别</li>
+                            <li>MES/ERP/OA跨系统联动</li>
+                        </ul>
+                    </div>
+                    <div class="border-l-3 border-orange pl-3">
+                        <div class="font-semibold">长期扩展</div>
+                        <ul class="list-disc pl-4 mt-1 space-y-1">
+                            <li>搭建工业AI智能体自动处理业务</li>
+                            <li>存储、算力集群横向扩容</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 9 总结 -->
+            <section id="p9" class="bg-white rounded-lg card-shadow p-4">
+                <h2 class="text-base font-bold text-primary border-b pb-2 mb-3">
+                    <i class="fa fa-flag-checkered mr-1"></i>九、方案总结
+                </h2>
+                <div class="bg-gradient-to-r from-blue-50 to-cyan-50 p-3 rounded text-xs">
+                    <p>
+                        本方案复用企业现有服务器资产，搭建DeepSeek+通义千问+豆包混合私有化AI平台，内网数据闭环安全。覆盖研发、生产、运维、办公全场景，算力架构稳定冗余，支持3-5年持续迭代升级，是纺织机械制造企业标准化私有化AI落地方案。
+                    </p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- 底部 -->
+    <footer class="bg-dark text-white text-center py-4 mt-6 text-xs">
+        <p>天门纺机私有化AI大模型解决方案</p>
+        <p class="text-gray-400 mt-1">本地私有化部署 · 数据安全可控</p>
+    </footer>
+</body>
+</html>
