@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人学习 | Liondony</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+        }
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #121826, #20293d);
+            color: #e2e8f0;
+            padding: 48px 24px;
+        }
+        .wrap {
+            max-width:720px;
+            margin:0 auto;
+        }
+        .back {
+            margin-bottom:30px;
+        }
+        .back a {
+            color:#60a5fa;
+            text-decoration:none;
+        }
+        .back a:hover {
+            text-decoration:underline;
+        }
+        h1 {
+            font-size:1.8rem;
+            margin-bottom:30px;
+            display:flex;
+            align-items:center;
+            gap:10px;
+        }
+        .file-list {
+            list-style:none;
+        }
+        .file-item {
+            padding:14px 16px;
+            border-radius:10px;
+            transition:0.24s;
+            margin-bottom:8px;
+        }
+        .file-item:hover {
+            background:rgba(255,255,255,0.06);
+        }
+        .file-item a {
+            display:flex;
+            align-items:center;
+            gap:12px;
+            color:#e2e8f0;
+            text-decoration:none;
+            font-size:1.02rem;
+        }
+        .icon {
+            color:#60a5fa;
+            font-size:18px;
+        }
+        footer {
+            text-align:center;
+            margin-top:60px;
+            color:#64748b;
+            font-size:0.86rem;
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <div class="back">
+        <a href="index.html">← 返回首页</a>
+    </div>
+    <h1>📚 个人学习</h1>
+    <ul class="file-list">
+        <!-- 复制模板新增文档
+        <li class="file-item">
+            <a href="xxx.html">
+                <span class="icon">📄</span>
+                <span>文档名称</span>
+            </a>
+        </li>
+        -->
+        <li class="file-item">
+            <a href="demo-study.html">
+                <span class="icon">📄</span>
+                <span>示例学习文档</span>
+            </a>
+        </li>
+    </ul>
+    <footer>
+        © Liondony Personal Website
+    </footer>
+</div>
+</body>
+</html>
