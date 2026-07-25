@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Liondony's website</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+        }
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #121826, #20293d);
+            color: #e2e8f0;
+            padding: 48px 24px;
+        }
+        .wrap {
+            max-width: 720px;
+            margin: 0 auto;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        h1 {
+            font-size: 2.3rem;
+            color: #ffffff;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            color: #94a3b8;
+            font-size: 1rem;
+        }
+        .box {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 32px;
+        }
+        .box-title {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .file-list {
+            list-style: none;
+        }
+        .file-item {
+            padding: 14px 16px;
+            border-radius: 10px;
+            transition: 0.24s ease;
+            margin-bottom: 8px;
+        }
+        .file-item:hover {
+            background: rgba(255,255,255,0.08);
+        }
+        .file-item a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #e2e8f0;
+            text-decoration: none;
+            font-size: 1.02rem;
+        }
+        .icon {
+            font-size: 18px;
+            color: #60a5fa;
+        }
+        footer {
+            text-align: center;
+            margin-top: 48px;
+            color: #64748b;
+            font-size: 0.86rem;
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <header>
+        <h1>Welcome to Liondony's website</h1>
+        <p class="subtitle">Personal Work Document Library</p>
+    </header>
+
+    <div class="box">
+        <div class="box-title">📁 工作文档</div>
+        <ul class="file-list">
+            <!-- 新增文档直接复制下面整行修改 -->
+            <li class="file-item">
+                <a href="demo.html">
+                    <span class="icon">📄</span>
+                    <span>示例文档名称</span>
+                </a>
+            </li>
+            <!-- 复制模板示例
+            <li class="file-item">
+                <a href="xxx.html">
+                    <span class="icon">📄</span>
+                    <span>文档名称</span>
+                </a>
+            </li>
+            -->
+        </ul>
+    </div>
+
+    <footer>
+        © Liondony Personal Website
+    </footer>
+</div>
+</body>
+</html>
