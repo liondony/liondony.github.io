@@ -1,0 +1,1524 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>天门纺机 · 新官网示范 DEMO｜智联世界 · 精纺未来</title>
+<meta name="description" content="天门纺机新官网示范原型：企业文化 · 智慧工厂 · 数字孪生 · 创新产品 · 全球市场 · 客户门户 · 供应商门户">
+<style>
+:root{
+  --bg-deep:#071527; --bg-panel:#0C2038; --bg-card:#102A47;
+  --primary:#0E4C92; --primary-l:#1B7AD4;
+  --accent:#F59E0B; --accent2:#F97316;
+  --ok:#10B981; --warn:#EF4444;
+  --text:#E7EEF7; --text-dim:#9FB3CC; --line:rgba(120,170,230,.16);
+  --radius:14px;
+  --shadow:0 18px 50px rgba(0,10,30,.45);
+  --font:"Microsoft YaHei","PingFang SC","Noto Sans SC",system-ui,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--bg-deep);color:var(--text);line-height:1.7;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{max-width:100%}
+::selection{background:var(--accent);color:#0A1626}
+section{position:relative;scroll-margin-top:76px}
+.wrap{max-width:1220px;margin:0 auto;padding:0 28px}
+.sec-tag{display:inline-flex;align-items:center;gap:8px;font-size:13px;letter-spacing:3px;color:var(--primary-l);text-transform:uppercase;margin-bottom:10px}
+.sec-tag::before{content:"";width:26px;height:1px;background:var(--accent)}
+.sec-title{font-size:clamp(26px,3.6vw,42px);font-weight:800;letter-spacing:1px;line-height:1.25}
+.sec-sub{color:var(--text-dim);max-width:760px;margin-top:12px;font-size:15.5px}
+.sec-head{margin-bottom:42px}
+.hl{color:var(--accent)}
+
+/* ---------- 顶部导航 ---------- */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;transition:.35s;background:transparent}
+nav .bar{display:flex;align-items:center;justify-content:space-between;height:72px;transition:.35s}
+nav.scrolled{background:rgba(7,21,39,.88);backdrop-filter:blur(14px);box-shadow:0 4px 24px rgba(0,0,0,.35)}
+nav.scrolled .bar{height:60px}
+.logo{display:flex;align-items:center;gap:12px;font-weight:800;font-size:18px}
+.logo .mk{width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,var(--primary-l),var(--primary));display:grid;place-items:center;font-size:20px;color:#fff;box-shadow:0 4px 14px rgba(27,122,212,.4)}
+.logo small{display:block;font-size:10px;letter-spacing:2px;color:var(--text-dim);font-weight:400}
+.menu{display:flex;align-items:center;gap:2px;list-style:none}
+.menu>li>a{display:block;padding:9px 11px;font-size:13.8px;color:var(--text);border-radius:8px;transition:.25s;position:relative;white-space:nowrap}
+.menu>li>a:hover,.menu>li>a.on{color:#fff;background:rgba(27,122,212,.18)}
+.menu .cta{background:linear-gradient(90deg,var(--accent),var(--accent2));color:#0A1626!important;font-weight:700;margin-left:8px}
+.menu .cta:hover{filter:brightness(1.08)}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:10px}
+.burger span{width:24px;height:2px;background:#fff;border-radius:2px;transition:.3s}
+@media(max-width:1180px){.menu{position:fixed;top:0;right:-320px;width:300px;height:100vh;background:rgba(7,21,39,.98);flex-direction:column;padding:90px 20px;gap:6px;transition:.35s;box-shadow:-10px 0 40px rgba(0,0,0,.4)}.menu.open{right:0}.menu>li{width:100%}.burger{display:flex}.menu .cta{margin-left:0}}
+
+/* ---------- Hero ---------- */
+#hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden}
+#hero .mesh{position:absolute;inset:0;background:
+ radial-gradient(900px 500px at 78% 20%,rgba(27,122,212,.28),transparent 60%),
+ radial-gradient(700px 500px at 12% 82%,rgba(245,158,11,.14),transparent 60%),
+ linear-gradient(180deg,#081c36 0%,#071527 60%,#06101f 100%)}
+#hero canvas{position:absolute;inset:0;width:100%;height:100%}
+.hero-in{position:relative;z-index:2;padding-top:90px;padding-bottom:60px}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;padding:7px 16px;border:1px solid var(--line);border-radius:100px;background:rgba(27,122,212,.1);font-size:13px;color:#BCD3EF;letter-spacing:1px;margin-bottom:26px;opacity:0;animation:fadeUp .8s .2s forwards}
+.hero-eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--ok);box-shadow:0 0 10px var(--ok);animation:pulse 1.8s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+.hero-in h1{font-size:clamp(34px,5.6vw,66px);font-weight:900;line-height:1.12;letter-spacing:1px;opacity:0;animation:fadeUp .9s .35s forwards}
+.hero-in h1 .grad{background:linear-gradient(90deg,#5CB3FF,#2F8FF0 55%,var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-in .sub{margin-top:20px;font-size:clamp(15px,1.6vw,18px);color:#C4D6EC;max-width:640px;opacity:0;animation:fadeUp .9s .5s forwards}
+.hero-cta{display:flex;gap:16px;margin-top:34px;flex-wrap:wrap;opacity:0;animation:fadeUp .9s .65s forwards}
+.btn{display:inline-flex;align-items:center;gap:9px;padding:13px 26px;border-radius:100px;font-weight:700;font-size:15px;cursor:pointer;transition:.3s;border:none}
+.btn-orange{background:linear-gradient(90deg,var(--accent),var(--accent2));color:#0A1626;box-shadow:0 10px 30px rgba(249,115,22,.35)}
+.btn-orange:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(249,115,22,.5)}
+.btn-ghost{border:1px solid var(--line);color:#fff;background:rgba(255,255,255,.03)}
+.btn-ghost:hover{border-color:var(--primary-l);background:rgba(27,122,212,.15)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+.hero-data{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:56px;opacity:0;animation:fadeUp .9s .8s forwards}
+.hd-card{background:rgba(16,42,71,.5);border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px;backdrop-filter:blur(8px);transition:.3s}
+.hd-card:hover{transform:translateY(-5px);border-color:var(--primary-l)}
+.hd-card .num{font-size:clamp(26px,3vw,38px);font-weight:900;color:#fff}
+.hd-card .num em{font-style:normal;color:var(--accent)}
+.hd-card .lbl{font-size:13px;color:var(--text-dim);margin-top:4px}
+@media(max-width:760px){.hero-data{grid-template-columns:repeat(2,1fr)}}
+.scroll-hint{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);z-index:3;color:var(--text-dim);font-size:12px;letter-spacing:3px;display:flex;flex-direction:column;align-items:center;gap:8px}
+.scroll-hint .wheel{width:22px;height:36px;border:2px solid var(--text-dim);border-radius:12px;position:relative}
+.scroll-hint .wheel::after{content:"";position:absolute;left:50%;top:7px;width:4px;height:8px;margin-left:-2px;background:var(--accent);border-radius:4px;animation:scroll 1.6s infinite}
+@keyframes scroll{0%{opacity:0;transform:translateY(0)}40%{opacity:1}80%{opacity:0;transform:translateY(12px)}100%{opacity:0}}
+
+/* ---------- 通用区块 ---------- */
+.section-pad{padding:110px 0}
+.reveal{opacity:0;transform:translateY(34px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:none}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:26px}
+@media(max-width:900px){.grid-3,.grid-2{grid-template-columns:1fr}}
+.card{background:linear-gradient(180deg,var(--bg-card),rgba(12,32,56,.6));border:1px solid var(--line);border-radius:var(--radius);padding:28px;transition:.35s;position:relative;overflow:hidden}
+.card::before{content:"";position:absolute;inset:0;background:radial-gradient(600px 200px at 50% -10%,rgba(27,122,212,.2),transparent);opacity:0;transition:.4s}
+.card:hover{transform:translateY(-6px);border-color:rgba(91,179,255,.4);box-shadow:var(--shadow)}
+.card:hover::before{opacity:1}
+.card .ic{width:52px;height:52px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,rgba(27,122,212,.3),rgba(27,122,212,.08));border:1px solid var(--line);margin-bottom:18px;font-size:24px}
+.card h3{font-size:19px;margin-bottom:10px}
+.card p{color:var(--text-dim);font-size:14.5px}
+
+/* ---------- 企业文化 ---------- */
+#culture{background:linear-gradient(180deg,#071527,#0A1E38)}
+.culture-wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:44px;align-items:center}
+@media(max-width:900px){.culture-wrap{grid-template-columns:1fr}}
+.culture-q{font-size:clamp(22px,2.8vw,32px);font-weight:800;line-height:1.5;border-left:4px solid var(--accent);padding-left:22px;margin:22px 0}
+.culture-q small{display:block;font-size:14px;color:var(--text-dim);font-weight:400;margin-top:10px}
+.strategy{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:26px}
+@media(max-width:760px){.strategy{grid-template-columns:1fr}}
+.strategy .s{background:rgba(16,42,71,.5);border:1px solid var(--line);border-radius:12px;padding:18px;text-align:center;transition:.3s}
+.strategy .s:hover{border-color:var(--accent);transform:translateY(-4px)}
+.strategy .s b{display:block;font-size:20px;color:var(--accent);margin-bottom:4px}
+.strategy .s span{font-size:13px;color:var(--text-dim)}
+.culture-imgs{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.culture-imgs .ci{border-radius:var(--radius);overflow:hidden;position:relative;border:1px solid var(--line)}
+.culture-imgs .ci img{width:100%;height:100%;object-fit:cover;display:block;transition:.5s}
+.culture-imgs .ci:hover img{transform:scale(1.06)}
+.culture-imgs .ci.tall{grid-row:span 2}
+.culture-imgs .ci .cap{position:absolute;left:0;right:0;bottom:0;padding:26px 14px 12px;background:linear-gradient(transparent,rgba(4,12,24,.85));font-size:13px;color:#DCE9F8}
+
+/* ---------- 智慧工厂 ---------- */
+.factory-layers{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+@media(max-width:900px){.factory-layers{grid-template-columns:1fr}}
+.layer{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--bg-card);transition:.35s;display:flex;flex-direction:column}
+.layer:hover{transform:translateY(-6px);border-color:rgba(91,179,255,.4)}
+.layer .head{padding:20px 24px;display:flex;align-items:center;gap:14px;border-bottom:1px solid var(--line)}
+.layer .head .no{width:40px;height:40px;border-radius:10px;display:grid;place-items:center;font-weight:800;color:#fff;background:linear-gradient(135deg,var(--primary-l),var(--primary))}
+.layer .head .no.o{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#0A1626}
+.layer .head h3{font-size:17px}
+.layer .head span{font-size:12px;color:var(--text-dim)}
+.layer ul{list-style:none;padding:18px 24px;display:grid;gap:11px;flex:1}
+.layer li{display:flex;gap:10px;font-size:14.5px;color:#C9DCF2;align-items:flex-start}
+.layer li::before{content:"▸";color:var(--primary-l);font-weight:700}
+.layer .foot{padding:14px 24px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;font-size:13px;color:var(--text-dim)}
+.layer .foot b{color:var(--accent);font-size:16px}
+
+/* ---------- 数字孪生 ---------- */
+#twin{background:linear-gradient(180deg,#0A1E38,#071527)}
+.twin-frame{border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#071222;box-shadow:var(--shadow)}
+.twin-toolbar{display:flex;flex-wrap:wrap;gap:10px;padding:16px 20px;background:rgba(12,32,56,.6);border-bottom:1px solid var(--line);align-items:center;justify-content:space-between}
+.twin-views{display:flex;gap:8px;flex-wrap:wrap}
+.tview{padding:8px 16px;border-radius:100px;font-size:13.5px;cursor:pointer;border:1px solid var(--line);color:var(--text-dim);transition:.3s;background:transparent}
+.tview:hover{color:#fff;border-color:var(--primary-l)}
+.tview.active{background:linear-gradient(90deg,var(--primary-l),var(--primary));color:#fff;border-color:transparent}
+.twin-status{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--ok)}
+.twin-status .dot{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 10px var(--ok);animation:pulse 1.5s infinite}
+.twin-body{display:grid;grid-template-columns:1.55fr 1fr;min-height:520px}
+@media(max-width:900px){.twin-body{grid-template-columns:1fr}}
+.twin-scene{position:relative;background:
+ radial-gradient(700px 300px at 70% 20%,rgba(27,122,212,.16),transparent),
+ linear-gradient(180deg,#081B33,#060F1E)}
+.twin-scene svg{width:100%;height:100%;display:block}
+.twin-panel{padding:22px;border-left:1px solid var(--line);background:rgba(10,26,46,.5);display:flex;flex-direction:column;gap:14px}
+.panel-title{font-size:15px;font-weight:700;letter-spacing:1px;display:flex;align-items:center;gap:8px}
+.panel-title::before{content:"";width:4px;height:16px;background:var(--accent);border-radius:2px}
+.metric{background:rgba(16,42,71,.55);border:1px solid var(--line);border-radius:12px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center}
+.metric .m-l{font-size:13px;color:var(--text-dim)}
+.metric .m-v{font-size:22px;font-weight:800;color:#fff}
+.metric .m-v em{font-style:normal;color:var(--accent)}
+.metric .m-v.up{color:var(--ok)}
+.metric .m-v.warn{color:var(--warn)}
+.device-list{display:grid;gap:8px}
+.dev{display:flex;align-items:center;justify-content:space-between;padding:9px 12px;border-radius:9px;background:rgba(12,32,56,.5);border:1px solid var(--line);font-size:13px}
+.dev .st{display:flex;align-items:center;gap:7px}
+.dev .st i{width:8px;height:8px;border-radius:50%}
+.dev .st i.run{background:var(--ok);box-shadow:0 0 8px var(--ok)}
+.dev .st i.idle{background:var(--accent);box-shadow:0 0 8px var(--accent)}
+.dev .st i.fault{background:var(--warn);box-shadow:0 0 8px var(--warn)}
+.dev .val{color:var(--text-dim);font-size:12.5px}
+.twin-note{font-size:12px;color:#6E86A5;line-height:1.6}
+.twin-note b{color:#9FB3CC}
+
+/* ---------- 产品 ---------- */
+.prod-filter{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:30px}
+.pf{padding:8px 18px;border-radius:100px;font-size:14px;cursor:pointer;border:1px solid var(--line);background:transparent;color:var(--text-dim);transition:.3s}
+.pf:hover{color:#fff}
+.pf.active{background:linear-gradient(90deg,var(--primary-l),var(--primary));color:#fff;border-color:transparent}
+.prod-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+@media(max-width:1080px){.prod-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.prod-grid{grid-template-columns:1fr}}
+.prod-card{background:linear-gradient(180deg,var(--bg-card),rgba(12,32,56,.55));border:1px solid var(--line);border-radius:16px;padding:20px;transition:.4s;cursor:pointer;position:relative;transform-style:preserve-3d}
+.prod-card:hover{transform:translateY(-8px);border-color:rgba(91,179,255,.45);box-shadow:var(--shadow)}
+.prod-card .badge{position:absolute;top:14px;right:14px;font-size:11px;padding:4px 10px;border-radius:100px;font-weight:700;letter-spacing:.5px}
+.prod-card .badge.new{background:linear-gradient(90deg,var(--accent),var(--accent2));color:#0A1626}
+.prod-card .badge.hot{background:rgba(16,185,129,.18);color:var(--ok);border:1px solid rgba(16,185,129,.4)}
+.prod-card .model{height:150px;display:grid;place-items:center;position:relative}
+.prod-card .model svg{width:160px;height:120px;transition:.5s}
+.prod-card:hover .model svg{transform:scale(1.08) rotate(-2deg)}
+.prod-card h3{font-size:17px;margin:12px 0 4px}
+.prod-card .tag{font-size:12px;color:var(--text-dim);margin-bottom:10px}
+.prod-card .specs{display:flex;gap:14px;font-size:12.5px;color:#C4D6EC}
+.prod-card .specs b{color:#fff}
+.prod-card .specs div span{color:var(--text-dim);display:block;font-size:11px}
+.innovative{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:46px;align-items:stretch}
+@media(max-width:900px){.innovative{grid-template-columns:1fr}}
+.innov-card{background:linear-gradient(135deg,rgba(27,122,212,.16),rgba(12,32,56,.6));border:1px solid rgba(91,179,255,.3);border-radius:16px;padding:28px;position:relative;overflow:hidden}
+.innov-card .k{font-size:12px;letter-spacing:2px;color:var(--accent);text-transform:uppercase;margin-bottom:8px}
+.innov-card h3{font-size:21px;margin-bottom:10px}
+.innov-card p{color:var(--text-dim);font-size:14.5px;margin-bottom:16px}
+.innov-card .flow{display:flex;align-items:center;gap:6px;justify-content:space-between;padding:14px 10px;background:rgba(4,12,24,.5);border-radius:10px;margin-top:auto}
+.flow .fm{text-align:center;font-size:12px;color:#C4D6EC}
+.flow .fm .dotm{width:34px;height:34px;margin:0 auto 5px;border-radius:8px;background:linear-gradient(135deg,var(--primary-l),var(--primary));display:grid;place-items:center;font-size:13px}
+.flow .farrow{color:var(--accent);font-size:18px;animation:flowx 1.4s infinite}
+@keyframes flowx{0%,100%{transform:translateX(0);opacity:.5}50%{transform:translateX(4px);opacity:1}}
+
+/* ---------- 全球市场 ---------- */
+#market{background:linear-gradient(180deg,#071527,#0A1E38)}
+.market-wrap{display:grid;grid-template-columns:1.4fr 1fr;gap:34px;align-items:center}
+@media(max-width:960px){.market-wrap{grid-template-columns:1fr}}
+.map-box{background:#071222;border:1px solid var(--line);border-radius:16px;padding:18px;position:relative;overflow:hidden}
+.map-box .map-title{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--text-dim);padding:0 6px 12px}
+.map-box svg{width:100%;height:auto;display:block}
+.map-legend{display:flex;gap:18px;font-size:12px;color:var(--text-dim);padding:12px 6px 0}
+.map-legend i{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px}
+.market-data .md{display:flex;align-items:center;gap:16px;padding:18px 0;border-bottom:1px solid var(--line)}
+.market-data .md:last-child{border:none}
+.market-data .md .big{font-size:30px;font-weight:900;color:#fff;min-width:120px}
+.market-data .md .big em{font-style:normal;color:var(--accent);font-size:20px}
+.market-data .md p{font-size:14px;color:var(--text-dim)}
+.market-data .md p b{color:#fff}
+.market-data .md .bar{height:6px;border-radius:3px;background:rgba(120,170,230,.15);margin-top:8px;overflow:hidden}
+.market-data .md .bar i{display:block;height:100%;border-radius:3px;background:linear-gradient(90deg,var(--primary-l),var(--accent));width:0;transition:1.4s ease}
+.pins{position:absolute}
+
+/* ---------- 新闻/培训 ---------- */
+.news-tabs{display:flex;gap:10px;margin-bottom:26px}
+.nt{padding:8px 18px;border-radius:100px;cursor:pointer;font-size:14px;border:1px solid var(--line);background:transparent;color:var(--text-dim);transition:.3s}
+.nt.active{background:linear-gradient(90deg,var(--primary-l),var(--primary));color:#fff;border-color:transparent}
+.news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media(max-width:960px){.news-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){.news-grid{grid-template-columns:1fr}}
+.news-card{background:var(--bg-card);border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:.35s;display:flex;flex-direction:column}
+.news-card:hover{transform:translateY(-6px);border-color:rgba(91,179,255,.4);box-shadow:var(--shadow)}
+.news-card .npic{height:150px;position:relative;overflow:hidden;background:linear-gradient(135deg,rgba(27,122,212,.3),rgba(12,32,56,.4));display:grid;place-items:center}
+.news-card .npic .ndate{position:absolute;top:12px;left:12px;background:rgba(7,21,39,.85);padding:5px 12px;border-radius:8px;font-size:12px;color:var(--accent);font-weight:700}
+.news-card .nbody{padding:18px;display:flex;flex-direction:column;gap:8px;flex:1}
+.news-card .nbody h4{font-size:15.5px;line-height:1.5}
+.news-card .nbody p{font-size:13px;color:var(--text-dim);flex:1}
+.news-card .nbody .more{font-size:13px;color:var(--primary-l);font-weight:600}
+.training{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:34px}
+@media(max-width:960px){.training{grid-template-columns:repeat(2,1fr)}}
+.tr{background:rgba(16,42,71,.5);border:1px solid var(--line);border-radius:12px;padding:18px;transition:.3s}
+.tr:hover{border-color:var(--accent);transform:translateY(-4px)}
+.tr .tic{font-size:24px;margin-bottom:8px}
+.tr h5{font-size:15px}
+.tr p{font-size:12.5px;color:var(--text-dim);margin-top:4px}
+.tr .n{font-size:11.5px;color:var(--accent);margin-top:8px;font-weight:700}
+
+/* ---------- 双门户 ---------- */
+.portal-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+@media(max-width:900px){.portal-grid{grid-template-columns:1fr}}
+.portal{position:relative;border-radius:20px;padding:38px;overflow:hidden;border:1px solid var(--line);transition:.4s;cursor:pointer}
+.portal:hover{transform:translateY(-8px);box-shadow:var(--shadow)}
+.portal.cust{background:linear-gradient(140deg,rgba(27,122,212,.28),rgba(10,30,54,.7))}
+.portal.supp{background:linear-gradient(140deg,rgba(16,185,129,.18),rgba(10,30,54,.7))}
+.portal .p-ic{width:60px;height:60px;border-radius:16px;display:grid;place-items:center;font-size:28px;background:rgba(255,255,255,.1);margin-bottom:20px}
+.portal h3{font-size:24px;margin-bottom:8px}
+.portal p{color:#C9DCF2;font-size:14.5px;margin-bottom:20px;max-width:420px}
+.portal .tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+.portal .tags span{font-size:12px;padding:5px 12px;border-radius:100px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14)}
+.portal .go{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:15px}
+.portal .go::after{content:"→";transition:.3s}
+.portal:hover .go::after{transform:translateX(5px)}
+.portal .mock{background:rgba(4,12,24,.45);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:16px;margin-top:20px;font-size:13px}
+.portal .mock .row{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px dashed rgba(255,255,255,.1);color:#C9DCF2}
+.portal .mock .row:last-child{border:none}
+.portal .mock .row .st-tag{font-size:11px;padding:2px 9px;border-radius:100px}
+.portal .mock .row .st-tag.g{background:rgba(16,185,129,.18);color:var(--ok)}
+.portal .mock .row .st-tag.y{background:rgba(245,158,11,.18);color:var(--accent)}
+.portal .mock .row .st-tag.b{background:rgba(27,122,212,.2);color:#5CB3FF}
+
+/* ---------- 底部 ---------- */
+footer{border-top:1px solid var(--line);background:#05101F;padding:60px 0 30px}
+.foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:30px;margin-bottom:40px}
+@media(max-width:900px){.foot-grid{grid-template-columns:1fr 1fr}}
+.foot-grid h5{font-size:14px;letter-spacing:1px;margin-bottom:16px;color:#fff}
+.foot-grid ul{list-style:none;display:grid;gap:9px}
+.foot-grid li a{font-size:13.5px;color:var(--text-dim);transition:.25s}
+.foot-grid li a:hover{color:var(--accent)}
+.foot-copy{border-top:1px solid var(--line);padding-top:24px;display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;font-size:12.5px;color:#6E86A5}
+
+/* ---------- 弹窗 ---------- */
+.modal-mask{position:fixed;inset:0;z-index:200;background:rgba(3,10,20,.72);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:20px}
+.modal-mask.show{display:flex;animation:fadeIn .3s}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.modal{width:100%;max-width:720px;max-height:90vh;overflow:auto;background:linear-gradient(180deg,#0E2240,#0A1A30);border:1px solid var(--line);border-radius:18px;padding:34px;position:relative;animation:pop .35s}
+@keyframes pop{from{transform:translateY(24px) scale(.98);opacity:0}to{transform:none;opacity:1}}
+.modal .close{position:absolute;top:16px;right:18px;font-size:22px;cursor:pointer;color:var(--text-dim);background:none;border:none;transition:.3s}
+.modal .close:hover{color:#fff;transform:rotate(90deg)}
+.modal h3{font-size:22px;margin-bottom:6px}
+.modal .msub{font-size:13.5px;color:var(--text-dim);margin-bottom:22px}
+.mtabs{display:flex;gap:8px;margin-bottom:22px}
+.mtab{padding:8px 16px;border-radius:100px;font-size:13.5px;cursor:pointer;border:1px solid var(--line);color:var(--text-dim);background:transparent;transition:.3s}
+.mtab.active{background:linear-gradient(90deg,var(--primary-l),var(--primary));color:#fff;border-color:transparent}
+.frm{display:grid;gap:14px}
+.frm .fr{display:grid;gap:6px}
+.frm label{font-size:13px;color:var(--text-dim)}
+.frm input,.frm select,.frm textarea{background:rgba(7,21,39,.7);border:1px solid var(--line);border-radius:9px;padding:11px 14px;color:#fff;font-size:14px;font-family:inherit;outline:none;transition:.25s}
+.frm input:focus,.frm select:focus,.frm textarea:focus{border-color:var(--primary-l)}
+.frm .f2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:640px){.frm .f2{grid-template-columns:1fr}}
+.progress{display:grid;gap:0}
+.pstep{display:flex;gap:14px;position:relative;padding-bottom:22px}
+.pstep:last-child{padding-bottom:0}
+.pstep::before{content:"";position:absolute;left:13px;top:30px;bottom:2px;width:2px;background:var(--line)}
+.pstep:last-child::before{display:none}
+.pstep .pc{width:28px;height:28px;border-radius:50%;background:rgba(12,32,56,.8);border:2px solid var(--line);display:grid;place-items:center;font-size:12px;font-weight:700;flex:none;z-index:1}
+.pstep.done .pc{background:linear-gradient(135deg,var(--ok),#059669);border-color:transparent;color:#fff}
+.pstep.now .pc{background:linear-gradient(135deg,var(--accent),var(--accent2));border-color:transparent;color:#0A1626;box-shadow:0 0 14px rgba(245,158,11,.5)}
+.pstep .pt b{display:block;font-size:14.5px}
+.pstep .pt span{font-size:12.5px;color:var(--text-dim)}
+.rfq{border:1px solid var(--line);border-radius:12px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;gap:10px;transition:.3s}
+.rfq:hover{border-color:var(--primary-l)}
+.rfq .r-t b{display:block;font-size:14px}
+.rfq .r-t span{font-size:12px;color:var(--text-dim)}
+.rfq .r-act{font-size:12.5px;font-weight:700;color:var(--ok);cursor:pointer;flex:none}
+.rating{display:flex;gap:8px;align-items:center}
+.rating .star{color:var(--accent)}
+.succ-msg{text-align:center;padding:30px 10px;display:none}
+.succ-msg .ok-ic{width:70px;height:70px;border-radius:50%;background:rgba(16,185,129,.15);border:2px solid var(--ok);display:grid;place-items:center;font-size:30px;color:var(--ok);margin:0 auto 16px;animation:pop .5s}
+.succ-msg h4{font-size:20px;margin-bottom:6px}
+.succ-msg p{color:var(--text-dim);font-size:14px}
+
+/* ---------- 荣誉实力 ---------- */
+.honor-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+@media(max-width:1100px){.honor-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.honor-grid{grid-template-columns:1fr}}
+.honor-group{background:var(--bg-card);border:1px solid var(--line);border-radius:16px;padding:22px;transition:.35s}
+.honor-group:hover{transform:translateY(-5px);border-color:rgba(91,179,255,.4)}
+.honor-group .hg-t{display:flex;align-items:center;gap:10px;font-size:15px;font-weight:700;margin-bottom:14px}
+.honor-group .hg-t .tic{width:34px;height:34px;border-radius:9px;display:grid;place-items:center;font-size:17px;background:linear-gradient(135deg,rgba(27,122,212,.3),rgba(27,122,212,.08));border:1px solid var(--line)}
+.honor-group ul{list-style:none;display:grid;gap:9px}
+.honor-group li{display:flex;gap:9px;align-items:flex-start;font-size:13.5px;color:#C9DCF2}
+.honor-group li b{color:#fff}
+.honor-group li::before{content:"🏅";font-size:12px}
+.honor-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:26px}
+@media(max-width:760px){.honor-stats{grid-template-columns:repeat(2,1fr)}}
+.hs{background:rgba(16,42,71,.5);border:1px solid var(--line);border-radius:12px;padding:18px;text-align:center}
+.hs .n{font-size:26px;font-weight:900;color:#fff}
+.hs .n em{font-style:normal;color:var(--accent)}
+.hs .l{font-size:12.5px;color:var(--text-dim);margin-top:3px}
+
+/* ---------- 人物与寄语 ---------- */
+.quote-card{background:linear-gradient(135deg,rgba(27,122,212,.14),rgba(12,32,56,.5));border:1px solid rgba(91,179,255,.28);border-radius:18px;padding:34px 38px;position:relative;margin-bottom:26px}
+.quote-card .q-mark{font-size:64px;color:var(--accent);font-family:Georgia,serif;line-height:1;height:40px}
+.quote-card .q-text{font-size:clamp(16px,2vw,20px);font-weight:600;line-height:1.7;color:#EAF3FD;margin-top:6px}
+.quote-card .q-by{margin-top:16px;font-size:14px;color:#BCD3EF}
+.quote-card .q-by small{display:block;font-size:12px;color:var(--text-dim);margin-top:4px;font-weight:400}
+.people-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+@media(max-width:900px){.people-grid{grid-template-columns:1fr}}
+.person{background:var(--bg-card);border:1px solid var(--line);border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:12px;transition:.35s}
+.person:hover{transform:translateY(-5px);border-color:rgba(245,158,11,.4)}
+.person .p-top{display:flex;align-items:center;gap:14px}
+.p-avatar{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;font-size:22px;font-weight:800;color:#fff;background:linear-gradient(135deg,var(--primary-l),var(--primary));border:2px solid rgba(91,179,255,.4);flex:none}
+.person .p-top b{display:block;font-size:17px;color:#fff}
+.person .p-top span{font-size:12.5px;color:var(--accent)}
+.person p{font-size:13.5px;color:var(--text-dim)}
+
+/* ---------- 元宇宙 ---------- */
+#metaverse{background:linear-gradient(180deg,#071527,#0A1E38)}
+.meta-frame{border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#071222;box-shadow:var(--shadow)}
+.meta-tabs{display:flex;gap:8px;padding:16px 20px;background:rgba(12,32,56,.6);border-bottom:1px solid var(--line);flex-wrap:wrap}
+.mtab2{padding:9px 18px;border-radius:100px;font-size:13.5px;cursor:pointer;border:1px solid var(--line);color:var(--text-dim);background:transparent;transition:.3s}
+.mtab2:hover{color:#fff;border-color:var(--primary-l)}
+.mtab2.active{background:linear-gradient(90deg,var(--primary-l),var(--primary));color:#fff;border-color:transparent}
+.hall{display:none}
+.hall.active{display:block}
+.hall-body{display:grid;grid-template-columns:1.5fr 1fr;min-height:430px}
+@media(max-width:900px){.hall-body{grid-template-columns:1fr}}
+.hall-scene{position:relative;background:radial-gradient(600px 300px at 70% 20%,rgba(27,122,212,.18),transparent),linear-gradient(180deg,#081B33,#060F1E)}
+.hall-scene svg{width:100%;height:100%;display:block;min-height:380px}
+.hall-info{padding:24px;border-left:1px solid var(--line);background:rgba(10,26,46,.5);display:flex;flex-direction:column;gap:12px}
+.hall-info h4{font-size:19px}
+.hall-info .hk{font-size:12px;letter-spacing:2px;color:var(--accent);text-transform:uppercase}
+.hall-info p{font-size:14px;color:var(--text-dim)}
+.hall-info .hmeta{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+.hall-info .hmeta span{font-size:12px;padding:5px 12px;border-radius:100px;background:rgba(255,255,255,.06);border:1px solid var(--line)}
+.meta-feats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:24px}
+@media(max-width:900px){.meta-feats{grid-template-columns:repeat(2,1fr)}}
+.mf{background:rgba(16,42,71,.5);border:1px solid var(--line);border-radius:12px;padding:16px;display:flex;gap:12px;align-items:center;transition:.3s}
+.mf:hover{border-color:var(--accent);transform:translateY(-3px)}
+.mf .mi{font-size:24px}
+.mf b{display:block;font-size:14px}
+.mf span{font-size:12px;color:var(--text-dim)}
+.hotspot{animation:pulse 2s infinite}
+
+/* ---------- 培训学院 ---------- */
+.course-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media(max-width:960px){.course-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){.course-grid{grid-template-columns:1fr}}
+.course{background:var(--bg-card);border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:.35s;display:flex;flex-direction:column}
+.course:hover{transform:translateY(-6px);border-color:rgba(91,179,255,.4);box-shadow:var(--shadow)}
+.course .cpic{position:relative;height:150px;background:linear-gradient(135deg,rgba(27,122,212,.3),rgba(12,32,56,.4));display:grid;place-items:center;font-size:44px}
+.course .cpic .dur{position:absolute;right:10px;bottom:10px;background:rgba(4,12,24,.85);font-size:11.5px;padding:3px 10px;border-radius:6px;color:#fff}
+.course .cpic .cat{position:absolute;left:10px;top:10px;font-size:11px;padding:4px 10px;border-radius:100px;background:linear-gradient(90deg,var(--accent),var(--accent2));color:#0A1626;font-weight:700}
+.course .cbody{padding:16px;display:flex;flex-direction:column;gap:8px;flex:1}
+.course .cbody h4{font-size:15px;line-height:1.45}
+.course .cbody p{font-size:12.5px;color:var(--text-dim);flex:1}
+.course .cbody .learn{align-self:flex-start;font-size:13px;font-weight:700;color:var(--primary-l);cursor:pointer;display:inline-flex;gap:6px;align-items:center}
+.course .cbody .learn:hover{color:var(--accent)}
+.academy-note{margin-top:26px;background:linear-gradient(135deg,rgba(245,158,11,.12),rgba(12,32,56,.4));border:1px solid rgba(245,158,11,.3);border-radius:14px;padding:18px 24px;font-size:13.5px;color:#E6D9BC;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
+
+/* 背景装饰 */
+.deco{position:absolute;pointer-events:none;opacity:.5}
+.notice{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(80px);background:#0E2240;border:1px solid var(--line);padding:14px 22px;border-radius:12px;font-size:14px;z-index:300;transition:.4s;box-shadow:var(--shadow);opacity:0}
+.notice.show{transform:translateX(-50%) translateY(0);opacity:1}
+</style>
+</head>
+<body>
+
+<!-- ======= 导航 ======= -->
+<nav id="nav">
+  <div class="wrap bar">
+    <a class="logo" href="#hero">
+      <span class="mk">天</span>
+      <span>天门纺机<small>HUBEI TIANMEN TEXTILE MACHINERY</small></span>
+    </a>
+    <ul class="menu" id="menu">
+      <li><a href="#hero" class="on">首页</a></li>
+      <li><a href="#culture">企业文化</a></li>
+      <li><a href="#honor">荣誉实力</a></li>
+      <li><a href="#factory">智慧工厂</a></li>
+      <li><a href="#twin">数字孪生</a></li>
+      <li><a href="#metaverse">元宇宙</a></li>
+      <li><a href="#products">产品中心</a></li>
+      <li><a href="#market">全球市场</a></li>
+      <li><a href="#news">新闻中心</a></li>
+      <li><a href="#academy">培训学院</a></li>
+      <li><a href="#portals">双门户</a></li>
+      <li><a class="cta" href="#" onclick="openModal('consult');return false;">预约参观</a></li>
+    </ul>
+    <div class="burger" id="burger"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+
+<!-- ======= Hero ======= -->
+<section id="hero">
+  <div class="mesh"></div>
+  <canvas id="particles"></canvas>
+  <div class="wrap hero-in">
+    <div class="hero-eyebrow"><span class="dot"></span>国家级专精特新"小巨人"企业 · 制造业单项冠军 · 湖北省数字孪生工厂</div>
+    <h1>智联世界 · <span class="grad">精纺未来</span><br>从一根纱线到一座数字工厂</h1>
+    <p class="sub">天门纺机 —— 全球最大规模并条机制造商之一。以企业文化铸魂、以智慧工厂筑基、以数字孪生赋能，为全球纺织客户提供高性能并条机与数字化纺纱解决方案。</p>
+    <div class="hero-cta">
+      <button class="btn btn-orange" onclick="go('twin')">▶ 体验数字孪生工厂</button>
+      <button class="btn btn-ghost" onclick="openModal('consult')">预约参观 / 在线询价</button>
+      <button class="btn btn-ghost" onclick="go('products')">查看产品</button>
+    </div>
+    <div class="hero-data reveal">
+      <div class="hd-card"><div class="num"><span data-count="60">0</span><em>+</em></div><div class="lbl">年匠心积淀 · 发轫1954</div></div>
+      <div class="hd-card"><div class="num"><span data-count="140">0</span><em>+</em></div><div class="lbl">项国家专利 · 完全自主知识产权</div></div>
+      <div class="hd-card"><div class="num"><span data-count="40">0</span><em>%+</em></div><div class="lbl">国内并条机市场占有率 · 多年第一</div></div>
+      <div class="hd-card"><div class="num"><span data-count="80">0</span><em>+</em></div><div class="lbl">智慧工厂建设任务 · 数字驱动智造</div></div>
+    </div>
+  </div>
+  <div class="scroll-hint"><div class="wheel"></div>滚动探索</div>
+</section>
+
+<!-- ======= 企业文化 ======= -->
+<section id="culture" class="section-pad">
+  <div class="wrap">
+    <div class="culture-wrap">
+      <div class="reveal">
+        <div class="sec-tag">Enterprise Culture</div>
+        <div class="sec-title">以文化铸魂<br>让世界看见<span class="hl">天门纺机的精神</span></div>
+        <div class="culture-q">"当民族工业精益表率，做纺织装备领先企业"
+          <small>—— 天门纺机企业愿景 · 以文化凝聚力量，用匠心丈量未来</small>
+        </div>
+        <div class="strategy">
+          <div class="s"><b>提精神</b><span>文化铸魂 · 三精战略</span></div>
+          <div class="s"><b>创精品</b><span>品质立身 · 单项冠军</span></div>
+          <div class="s"><b>当精英</b><span>人才驱动 · 产教融合</span></div>
+        </div>
+        <p style="color:var(--text-dim);font-size:14.5px;margin-top:20px">践行"利他共赢"的经营理念，着力优化社会、市场、内部"三个生态"；专注提升并条机"四性一感"——先进性、稳定性、可靠性、可操作性与用户体验感。</p>
+        <button class="btn btn-ghost" style="margin-top:22px" onclick="openModal('culture')">走进企业精神文化馆</button>
+      </div>
+      <div class="culture-imgs reveal">
+        <div class="ci tall"><div style="height:100%;display:grid;place-items:center;background:linear-gradient(160deg,#0E4C92,#0B2A4A)"><div style="text-align:center;padding:30px"><div style="font-size:52px">🏭</div><div style="font-weight:800;font-size:17px;margin-top:8px">智慧工厂全景</div><div style="font-size:13px;color:#BCD3EF;margin-top:4px">AGV · 智能立库 · 机器人产线</div></div></div></div>
+        <div class="ci"><div style="height:150px;display:grid;place-items:center;background:linear-gradient(150deg,#F59E0B,#B45309)"><div style="text-align:center"><div style="font-size:38px">🎓</div><div style="font-weight:700">产教融合 · 智匠工坊</div></div></div></div>
+        <div class="ci"><div style="height:150px;display:grid;place-items:center;background:linear-gradient(150deg,#10B981,#065F46)"><div style="text-align:center"><div style="font-size:38px">🤝</div><div style="font-weight:700">社会责任 · 共赢生态</div></div></div></div>
+      </div>
+    </div>
+
+    <!-- 董事长寄语 & 核心人物 -->
+    <div class="reveal" style="margin-top:72px">
+      <div class="sec-tag">People · 人物与温度</div>
+      <div class="sec-title">有温度的企业 · <span class="hl">从"人"说起</span></div>
+      <div class="quote-card">
+        <div class="q-mark">“</div>
+        <div class="q-text">在经济新常态与行业转型升级的形势下，天门纺机与广大同仁肩负着推动国产装备向自动化、智能化方向发展的历史使命，承载着中国从纺织大国向纺织强国跨越的梦想。科学没有止境，创新任重道远，愿我们守望相助，共赢未来。</div>
+        <div class="q-by">—— 董事长寄语 · 沈方勇<small>据官网《董事长致辞》公开内容精神整理 · 人物信息以官网发布为准</small></div>
+      </div>
+      <div class="people-grid">
+        <div class="person">
+          <div class="p-top"><div class="p-avatar">沈</div><div><b>沈方勇</b><span>董事长 · 战略掌舵</span></div></div>
+          <p>提出并践行"三精"战略，引领企业从手工作坊走向数字化、智能化，坚定"当民族工业精益表率，做纺织装备领先企业"的愿景。</p>
+        </div>
+        <div class="person">
+          <div class="p-top"><div class="p-avatar">焦</div><div><b>焦伦进</b><span>总经理 · 经营管理</span></div></div>
+          <p>推动智慧工厂建设与全球市场开拓，带领团队深耕棉纺并条机细分赛道，冲刺更高销售目标，助力行业智能化改造。</p>
+        </div>
+        <div class="person">
+          <div class="p-top"><div class="p-avatar">研</div><div><b>研发团队</b><span>全国新型纺织并条机研究中心</span></div></div>
+          <p>依托 140+ 项国家专利与"智并联"原创技术，从跟跑到领跑，持续引领并条机行业技术创新与标准制定。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= 荣誉实力 ======= -->
+<section id="honor" class="section-pad" style="background:linear-gradient(180deg,#071527,#0A1E38)">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-tag">Strength & Honors · 实力与荣誉</div>
+      <div class="sec-title">用实力说话 · <span class="hl">荣誉与资质</span></div>
+      <p class="sec-sub">国家级专精特新"小巨人"、制造业单项冠军、高新技术企业……每一项荣誉与数百项专利，都是 60 余年匠心与创新的见证。</p>
+    </div>
+    <div class="honor-grid reveal">
+      <div class="honor-group">
+        <div class="hg-t"><div class="tic">🏆</div>国家级资质</div>
+        <ul>
+          <li><b>国家级专精特新"小巨人"</b>企业</li>
+          <li><b>制造业单项冠军</b>（棉纺并条机）</li>
+          <li>国家<b>高新技术企业</b></li>
+          <li>全国守合同重信用企业</li>
+        </ul>
+      </div>
+      <div class="honor-group">
+        <div class="hg-t"><div class="tic">📜</div>行业权威</div>
+        <ul>
+          <li>中国纺织机械协会<b>副会长单位</b></li>
+          <li>棉纺并条机<b>行业标准制定牵头单位</b></li>
+          <li>全国新型纺织<b>并条机研究中心</b></li>
+          <li>纺织机械与器材标准制定单位</li>
+        </ul>
+      </div>
+      <div class="honor-group">
+        <div class="hg-t"><div class="tic">⭐</div>省级荣誉</div>
+        <ul>
+          <li><b>湖北省数字孪生工厂</b>（2025 获评）</li>
+          <li>湖北省支柱产业细分领域<b>隐形冠军科技小巨人</b></li>
+          <li><b>湖北精品</b> · 湖北省五一劳动奖状</li>
+          <li>长江质量奖提名奖 · 湖北省企业技术中心</li>
+        </ul>
+      </div>
+      <div class="honor-group">
+        <div class="hg-t"><div class="tic">🧪</div>专利与认证</div>
+        <ul>
+          <li><b>完全自主知识产权</b> · "天鹤"牌并条机</li>
+          <li><b>140+ 项国家专利</b> · 原创"智并联"技术</li>
+          <li>产品通过 <b>CE 认证</b>，出口欧盟</li>
+          <li>多型号入选"建国 60 年有影响力纺织产品"</li>
+        </ul>
+      </div>
+    </div>
+    <div class="honor-stats reveal">
+      <div class="hs"><div class="n"><span data-count="140">0</span><em>+</em></div><div class="l">项国家专利 · 完全自主知识产权</div></div>
+      <div class="hs"><div class="n"><span data-count="3">0</span><em> 项</em></div><div class="l">国家级资质（小巨人/单项冠军/高新）</div></div>
+      <div class="hs"><div class="n"><span data-count="80">0</span><em>+</em></div><div class="l">智慧工厂建设任务 · 数字驱动</div></div>
+      <div class="hs"><div class="n"><span data-count="40">0</span><em>%+</em></div><div class="l">国内并条机市场占有率 · 多年第一</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= 智慧工厂 ======= -->
+<section id="factory" class="section-pad" style="background:linear-gradient(180deg,#0A1E38,#071527)">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-tag">Smart Factory</div>
+      <div class="sec-title">一座<span class="hl">会思考的智慧工厂</span><br>「生产制造柔性化 · 物流仓储自动化 · 企业管理信息化」</div>
+      <p class="sec-sub">以数字算力为底座，智能装备为筋骨，业务运营为血脉，智能决策为大脑——天门纺机建成国内领先的纺织装备智慧工厂，并获评<strong style="color:#fff">"湖北省数字孪生工厂"</strong>。</p>
+    </div>
+    <div class="factory-layers">
+      <div class="layer reveal">
+        <div class="head"><div class="no">L1</div><div><h3>智能装备层</h3><span>Intelligent Equipment</span></div></div>
+        <ul>
+          <li>智能立体仓库 & 智能标准件库</li>
+          <li>AGV 自动导引小车物料流转</li>
+          <li>机器人自动折弯单元</li>
+          <li>激光下料线 · 自动化切割</li>
+          <li>立式加工中心自动化产线</li>
+          <li>静电喷粉 · 柔性装配线</li>
+        </ul>
+        <div class="foot"><span>自动化设备</span><b>80+ 项任务</b></div>
+      </div>
+      <div class="layer reveal">
+        <div class="head"><div class="no o">L2</div><div><h3>自动化产线层</h3><span>Automated Line</span></div></div>
+        <ul>
+          <li>钣金柔性生产线 · 板材自动加工</li>
+          <li>总装试车线 · 数字化装配</li>
+          <li>中试基地 · 新技术试验验证</li>
+          <li>参观栈桥 · 透明化智能工厂</li>
+          <li>产线级数字孪生实时联动</li>
+        </ul>
+        <div class="foot"><span>自动化产线</span><b>柔性化</b></div>
+      </div>
+      <div class="layer reveal">
+        <div class="head"><div class="no">L3</div><div><h3>信息管理层</h3><span>Digital Governance</span></div></div>
+        <ul>
+          <li>PLM 产品全生命周期管理</li>
+          <li>ERP 企业资源计划 · MES 制造执行</li>
+          <li>WMS 仓储管理 · 数据中台</li>
+          <li>数字孪生 · 数据驱动决策</li>
+          <li>IT/OT 融合 · 工业数据安全</li>
+        </ul>
+        <div class="foot"><span>数字化能力</span><b>信息化</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= 数字孪生 ======= -->
+<section id="twin" class="section-pad">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-tag">Digital Twin · 数字孪生</div>
+      <div class="sec-title">一座会"呼吸"的<span class="hl">数字工厂</span></div>
+      <p class="sec-sub">工厂级 · 产线级数字孪生实时呈现。拖动视角、点击设备、观察数据——虚拟世界与物理工厂同频共振。<small style="display:block;margin-top:8px;color:#6E86A5">* DEMO 为示意数据，一期上线后可对接 MES/SCADA 实时数据。</small></p>
+    </div>
+    <div class="twin-frame reveal">
+      <div class="twin-toolbar">
+        <div class="twin-views" id="twinViews">
+          <button class="tview active" data-v="overview">工厂总览</button>
+          <button class="tview" data-v="warehouse">智能立库</button>
+          <button class="tview" data-v="line">自动化产线</button>
+        </div>
+        <div class="twin-status"><span class="dot"></span>实时数据链路已连接 · 2026-09-02 10:5x</div>
+      </div>
+      <div class="twin-body">
+        <div class="twin-scene" id="twinScene">
+          <!-- 三个视角的 SVG 场景 -->
+          <svg viewBox="0 0 720 480" id="svgOverview">
+            <!-- 地面网格 -->
+            <defs>
+              <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                <path d="M40 0H0V40" fill="none" stroke="rgba(120,170,230,.10)" stroke-width="1"/>
+              </pattern>
+              <marker id="arrow" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#F59E0B"/></marker>
+            </defs>
+            <rect width="720" height="480" fill="url(#grid)"/>
+            <!-- 建筑轮廓 -->
+            <rect x="40" y="60" width="640" height="360" rx="10" fill="rgba(14,76,146,.08)" stroke="rgba(91,179,255,.28)" stroke-width="1.5"/>
+            <!-- 三个车间 -->
+            <g>
+              <rect x="70" y="95" width="160" height="130" rx="8" fill="rgba(16,42,71,.6)" stroke="rgba(91,179,255,.3)"/>
+              <text x="150" y="118" text-anchor="middle" fill="#9FB3CC" font-size="11">加工车间 · 立加产线</text>
+              <!-- 机器 -->
+              <g class="machine"><rect x="90" y="140" width="34" height="30" rx="4" fill="#0E4C92" stroke="#5CB3FF"/><rect x="98" y="130" width="18" height="10" rx="2" fill="#1B7AD4"/><circle cx="134" cy="150" r="5" fill="none" stroke="#5CB3FF" stroke-dasharray="3 3" class="spin"/></g>
+              <g class="machine" transform="translate(50,0)"><rect x="90" y="140" width="34" height="30" rx="4" fill="#0E4C92" stroke="#5CB3FF"/><rect x="98" y="130" width="18" height="10" rx="2" fill="#1B7AD4"/></g>
+              <g class="machine" transform="translate(100,0)"><rect x="90" y="140" width="34" height="30" rx="4" fill="#0E4C92" stroke="#5CB3FF"/><rect x="98" y="130" width="18" height="10" rx="2" fill="#1B7AD4"/></g>
+              <!-- AGV 路径 -->
+              <path d="M150,230 H320 Q340,230 340,250 V330 Q340,350 320,350 H200" fill="none" stroke="rgba(245,158,11,.5)" stroke-width="2" stroke-dasharray="6 5"/>
+              <circle r="6" fill="#F59E0B" class="agv agv1"><animateMotion dur="9s" repeatCount="indefinite" path="M150,230 H320 Q340,230 340,250 V330 Q340,350 320,350 H200"/></circle>
+              <text x="230" y="252" fill="#8FA6C4" font-size="10">AGV 物流通道</text>
+            </g>
+            <g>
+              <rect x="270" y="95" width="160" height="130" rx="8" fill="rgba(16,42,71,.6)" stroke="rgba(91,179,255,.3)"/>
+              <text x="350" y="118" text-anchor="middle" fill="#9FB3CC" font-size="11">钣金折弯 · 激光下料</text>
+              <rect x="290" y="140" width="44" height="34" rx="4" fill="#0B2A4A" stroke="#5CB3FF"/>
+              <line x1="292" y1="160" x2="332" y2="160" stroke="#F59E0B" stroke-width="2"/>
+              <line x1="292" y1="152" x2="332" y2="152" stroke="#F59E0B" stroke-width="2"/>
+              <g class="machine" transform="translate(70,0)"><rect x="290" y="140" width="34" height="30" rx="4" fill="#0E4C92" stroke="#5CB3FF"/></g>
+            </g>
+            <g>
+              <rect x="470" y="95" width="200" height="130" rx="8" fill="rgba(16,42,71,.6)" stroke="rgba(91,179,255,.3)"/>
+              <text x="570" y="118" text-anchor="middle" fill="#9FB3CC" font-size="11">总装试车线 · 并条机组装</text>
+              <!-- 传送带 -->
+              <rect x="490" y="200" width="160" height="10" rx="5" fill="rgba(27,122,212,.4)"/>
+              <rect x="492" y="198" width="14" height="14" rx="3" fill="#5CB3FF" class="conveyor"/>
+              <g class="machine" transform="translate(0,0)"><rect x="500" y="140" width="34" height="30" rx="4" fill="#0E4C92" stroke="#5CB3FF"/></g>
+              <g class="machine" transform="translate(45,0)"><rect x="500" y="140" width="34" height="30" rx="4" fill="#0E4C92" stroke="#5CB3FF"/></g>
+              <g class="machine" transform="translate(90,0)"><rect x="500" y="140" width="34" height="30" rx="4" fill="#0E4C92" stroke="#5CB3FF"/></g>
+            </g>
+            <!-- 立库 -->
+            <g>
+              <rect x="470" y="280" width="200" height="110" rx="8" fill="rgba(16,42,71,.6)" stroke="rgba(91,179,255,.3)"/>
+              <text x="570" y="300" text-anchor="middle" fill="#9FB3CC" font-size="11">智能立体仓库</text>
+              <g stroke="rgba(91,179,255,.25)">
+                <line x1="500" y1="315" x2="640" y2="315"/><line x1="500" y1="330" x2="640" y2="330"/><line x1="500" y1="345" x2="640" y2="345"/>
+                <line x1="520" y1="305" x2="520" y2="365"/><line x1="545" y1="305" x2="545" y2="365"/><line x1="570" y1="305" x2="570" y2="365"/>
+                <line x1="595" y1="305" x2="595" y2="365"/><line x1="620" y1="305" x2="620" y2="365"/>
+              </g>
+              <rect x="515" y="355" width="18" height="9" rx="2" fill="#F59E0B" class="fork"><animateTransform attributeName="transform" type="translate" values="0,0;80,0;80,0;0,0;0,0" dur="6s" repeatCount="indefinite"/></rect>
+            </g>
+            <!-- 顶部数据条 -->
+            <g>
+              <rect x="70" y="300" width="360" height="70" rx="8" fill="rgba(7,21,39,.55)" stroke="rgba(91,179,255,.2)"/>
+              <text x="90" y="320" fill="#9FB3CC" font-size="11">工厂综合看板</text>
+              <text x="90" y="345" fill="#5CB3FF" font-size="12">今日产量 <tspan fill="#F59E0B" font-weight="bold" class="live">128</tspan> 台 · 稼动率 <tspan fill="#F59E0B" font-weight="bold" class="live">91%</tspan></text>
+              <text x="90" y="362" fill="#5CB3FF" font-size="12">在线设备 <tspan fill="#10B981" font-weight="bold">46</tspan>/48 · AGV <tspan fill="#10B981" font-weight="bold">6</tspan> 台运行</text>
+            </g>
+          </svg>
+
+          <svg viewBox="0 0 720 480" id="svgWarehouse" style="display:none">
+            <rect width="720" height="480" fill="#071222"/>
+            <defs><pattern id="grid2" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="rgba(120,170,230,.10)"/></pattern></defs>
+            <rect width="720" height="480" fill="url(#grid2)"/>
+            <text x="360" y="44" text-anchor="middle" fill="#9FB3CC" font-size="13">智能立体仓库 · 3D 视角（DEMO）</text>
+            <!-- 立体货架 -->
+            <g opacity="0.9">
+              <polygon points="150,420 150,180 210,160 210,400" fill="rgba(14,76,146,.5)" stroke="#5CB3FF"/>
+              <polygon points="210,400 210,160 430,160 430,400" fill="rgba(16,42,71,.8)" stroke="#5CB3FF"/>
+              <polygon points="150,180 210,160 430,160 370,180" fill="rgba(27,122,212,.35)" stroke="#5CB3FF"/>
+              <g stroke="rgba(91,179,255,.2)">
+                <line x1="170" y1="200" x2="230" y2="185"/><line x1="170" y1="230" x2="230" y2="215"/><line x1="170" y1="260" x2="230" y2="245"/>
+                <line x1="230" y1="185" x2="410" y2="185"/><line x1="230" y1="215" x2="410" y2="215"/><line x1="230" y1="245" x2="410" y2="245"/>
+              </g>
+              <!-- 货物 -->
+              <g fill="rgba(245,158,11,.8)">
+                <rect x="250" y="176" width="40" height="7" rx="1"/><rect x="300" y="176" width="40" height="7" rx="1"/>
+                <rect x="360" y="176" width="40" height="7" rx="1"/>
+                <rect x="250" y="206" width="40" height="7" rx="1"/><rect x="360" y="206" width="40" height="7" rx="1"/>
+              </g>
+            </g>
+            <!-- 巷道 AGV -->
+            <path d="M120,440 H600" fill="none" stroke="rgba(245,158,11,.4)" stroke-width="2" stroke-dasharray="6 5"/>
+            <g>
+              <rect x="-16" y="-9" width="32" height="18" rx="4" fill="#0E4C92" stroke="#5CB3FF"/>
+              <circle r="6" fill="#F59E0B" class="agv agv2"><animateMotion dur="8s" repeatCount="indefinite" path="M120,430 H600"/></circle>
+            </g>
+            <text x="120" y="460" fill="#8FA6C4" font-size="10">巷道 · 堆垛机/AGV 自动出入库</text>
+            <text x="480" y="120" fill="#8FA6C4" font-size="11">库位 12,800 个 · 货到人拣选</text>
+            <rect x="470" y="132" width="30" height="6" rx="3" fill="rgba(245,158,11,.5)"/>
+            <text x="300" y="340" fill="#9FB3CC" font-size="11">标准件库 · 智能拣选</text>
+          </svg>
+
+          <svg viewBox="0 0 720 480" id="svgLine" style="display:none">
+            <rect width="720" height="480" fill="#071222"/>
+            <defs><pattern id="grid3" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="rgba(120,170,230,.10)"/></pattern></defs>
+            <rect width="720" height="480" fill="url(#grid3)"/>
+            <text x="360" y="40" text-anchor="middle" fill="#9FB3CC" font-size="13">并条产线 · 智并联联动（DEMO）</text>
+            <!-- 三台并条机 -->
+            <g>
+              <rect x="70" y="150" width="150" height="120" rx="10" fill="rgba(16,42,71,.7)" stroke="#5CB3FF"/>
+              <text x="145" y="180" text-anchor="middle" fill="#C4D6EC" font-size="13" font-weight="bold">并条机 #1</text>
+              <circle cx="110" cy="230" r="16" fill="none" stroke="#F59E0B" stroke-width="3" class="can"/>
+              <circle cx="110" cy="230" r="5" fill="#F59E0B"/>
+              <text x="145" y="252" text-anchor="middle" fill="#8FA6C4" font-size="10">输出 800 m/min</text>
+            </g>
+            <g transform="translate(230,0)">
+              <rect x="70" y="150" width="150" height="120" rx="10" fill="rgba(16,42,71,.7)" stroke="#5CB3FF"/>
+              <text x="145" y="180" text-anchor="middle" fill="#C4D6EC" font-size="13" font-weight="bold">并条机 #2</text>
+              <circle cx="110" cy="230" r="16" fill="none" stroke="#F59E0B" stroke-width="3" class="can"/>
+              <circle cx="110" cy="230" r="5" fill="#F59E0B"/>
+              <text x="145" y="252" text-anchor="middle" fill="#8FA6C4" font-size="10">输出 800 m/min</text>
+            </g>
+            <g transform="translate(460,0)">
+              <rect x="70" y="150" width="150" height="120" rx="10" fill="rgba(16,42,71,.7)" stroke="#5CB3FF"/>
+              <text x="145" y="180" text-anchor="middle" fill="#C4D6EC" font-size="13" font-weight="bold">并条机 #3</text>
+              <circle cx="110" cy="230" r="16" fill="none" stroke="#F59E0B" stroke-width="3" class="can"/>
+              <circle cx="110" cy="230" r="5" fill="#F59E0B"/>
+              <text x="145" y="252" text-anchor="middle" fill="#8FA6C4" font-size="10">输出 800 m/min</text>
+            </g>
+            <!-- 棉条流动（智并联） -->
+            <path d="M225,210 C300,170 360,250 435,210" fill="none" stroke="#F59E0B" stroke-width="3" stroke-dasharray="8 6" marker-end="url(#arrow)"/>
+            <path d="M455,210 C530,170 590,250 665,210" fill="none" stroke="#F59E0B" stroke-width="3" stroke-dasharray="8 6" marker-end="url(#arrow)"/>
+            <text x="330" y="205" text-anchor="middle" fill="#F59E0B" font-size="11" font-weight="bold">棉条流转 · 自动生头</text>
+            <!-- 数据流 -->
+            <g>
+              <rect x="60" y="330" width="600" height="90" rx="10" fill="rgba(7,21,39,.6)" stroke="rgba(91,179,255,.2)"/>
+              <text x="80" y="354" fill="#9FB3CC" font-size="11">产线数据 · 智并联（运动控制 / 数据读取 / 工艺诊断）</text>
+              <text x="80" y="382" fill="#5CB3FF" font-size="13">生产节拍 <tspan fill="#F59E0B" font-weight="bold" class="live">28s</tspan> · 在线锭数 <tspan fill="#F59E0B" font-weight="bold" class="live">48</tspan> 眼</text>
+              <text x="80" y="404" fill="#5CB3FF" font-size="13">棉条均匀度 CV% <tspan fill="#10B981" font-weight="bold" class="live">1.85</tspan> · 实时告警 <tspan fill="#10B981" font-weight="bold">0</tspan></text>
+              <rect x="560" y="350" width="80" height="48" rx="8" fill="rgba(245,158,11,.12)" stroke="rgba(245,158,11,.4)"/>
+              <text x="600" y="372" text-anchor="middle" fill="#F59E0B" font-size="11" font-weight="bold">OEE</text>
+              <text x="600" y="392" text-anchor="middle" fill="#fff" font-size="16" font-weight="bold" class="live">91.2%</text>
+            </g>
+          </svg>
+        </div>
+        <div class="twin-panel">
+          <div class="panel-title">实时运行数据 · Real-time</div>
+          <div class="metric"><span class="m-l">今日产量</span><span class="m-v"><span id="mProd">128</span><em> 台</em></span></div>
+          <div class="metric"><span class="m-l">设备稼动率 OEE</span><span class="m-v up" id="mOee">91.2%</span></div>
+          <div class="metric"><span class="m-l">产线节拍</span><span class="m-v" id="mBeat">28<em> s</em></span></div>
+          <div class="metric"><span class="m-l">能耗</span><span class="m-v" id="mPower">4,320<em> kWh</em></span></div>
+          <div class="panel-title" style="margin-top:6px">设备状态</div>
+          <div class="device-list">
+            <div class="dev"><span class="st"><i class="run"></i>立式加工中心 · CNC-01</span><span class="val">运行中 · 96%</span></div>
+            <div class="dev"><span class="st"><i class="run"></i>机器人折弯单元 · BND-02</span><span class="val">运行中 · 94%</span></div>
+            <div class="dev"><span class="st"><i class="idle"></i>激光下料线 · LAS-03</span><span class="val">待料 · 排程</span></div>
+            <div class="dev"><span class="st"><i class="run"></i>AGV 车队 · 6 台</span><span class="val">运行中 · 准时率 99%</span></div>
+            <div class="dev"><span class="st"><i class="run"></i>总装试车线 · ASM-04</span><span class="val">运行中 · 98%</span></div>
+          </div>
+          <div class="twin-note"><b>DEMO 说明：</b>画面为数字孪生示意图。正式版将基于 Three.js 呈现可旋转 3D 工厂/产线模型，并通过 WebSocket 对接 MES/SCADA 实时数据，实现模型状态与数据同频联动。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= 元宇宙 ======= -->
+<section id="metaverse" class="section-pad">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-tag">Metaverse · 云上展厅</div>
+      <div class="sec-title">云上文化馆 · 纺机博物馆 · <span class="hl">元宇宙</span></div>
+      <p class="sec-sub">打造线上永不落幕的企业展厅——企业文化馆、纺机博物馆与数字工厂搬上云端，可 360° 在线预览，让世界随时走进天门纺机的底蕴与智能制造。<small style="display:block;margin-top:8px;color:#6E86A5">* 以下为 DEMO 示意场景，正式版将以 3D 虚拟展厅 / WebGL 漫游呈现。</small></p>
+    </div>
+    <div class="meta-frame reveal">
+      <div class="meta-tabs" id="metaTabs">
+        <button class="mtab2 active" data-hall="culture">🎭 企业文化馆</button>
+        <button class="mtab2" data-hall="museum">🏛️ 纺机博物馆</button>
+        <button class="mtab2" data-hall="factory">🏭 数字工厂</button>
+      </div>
+      <div class="hall active" id="hall-culture">
+        <div class="hall-body">
+          <div class="hall-scene">
+            <svg viewBox="0 0 720 430">
+              <defs><pattern id="hg" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="rgba(120,170,230,.08)"/></pattern></defs>
+              <rect width="720" height="430" fill="url(#hg)"/>
+              <polygon points="60,390 60,120 360,80 360,350" fill="rgba(14,76,146,.3)" stroke="#5CB3FF"/>
+              <polygon points="360,350 360,80 660,120 660,390" fill="rgba(16,42,71,.55)" stroke="#5CB3FF"/>
+              <polygon points="60,120 360,80 660,120 360,160" fill="rgba(27,122,212,.3)" stroke="#5CB3FF"/>
+              <!-- 愿景标语墙 -->
+              <rect x="120" y="180" width="240" height="90" rx="8" fill="rgba(4,12,24,.6)" stroke="rgba(245,158,11,.5)"/>
+              <text x="240" y="215" text-anchor="middle" fill="#F59E0B" font-size="13" font-weight="bold">企业愿景</text>
+              <text x="240" y="242" text-anchor="middle" fill="#fff" font-size="12">当民族工业精益表率</text>
+              <text x="240" y="260" text-anchor="middle" fill="#fff" font-size="12">做纺织装备领先企业</text>
+              <!-- 荣誉墙 -->
+              <rect x="400" y="180" width="200" height="90" rx="8" fill="rgba(4,12,24,.6)" stroke="#5CB3FF"/>
+              <text x="500" y="205" text-anchor="middle" fill="#9FB3CC" font-size="11">荣誉资质墙</text>
+              <text x="500" y="228" text-anchor="middle" fill="#fff" font-size="11">🏅 单项冠军 · 🏅 小巨人</text>
+              <text x="500" y="248" text-anchor="middle" fill="#fff" font-size="11">🏅 高新技术企业 · CE</text>
+              <!-- 地面展板 -->
+              <rect x="120" y="310" width="180" height="46" rx="6" fill="rgba(27,122,212,.25)" stroke="#5CB3FF"/>
+              <text x="210" y="338" text-anchor="middle" fill="#C4D6EC" font-size="11">三精战略 · 文化馆影像墙</text>
+              <rect x="410" y="310" width="180" height="46" rx="6" fill="rgba(245,158,11,.16)" stroke="#F59E0B"/>
+              <text x="500" y="338" text-anchor="middle" fill="#E6D9BC" font-size="11">360° 全景 · 在线漫游</text>
+              <!-- 参观者 -->
+              <circle cx="330" cy="360" r="7" fill="#10B981"/><line x1="330" y1="367" x2="330" y2="384" stroke="#10B981" stroke-width="3"/>
+              <text x="330" y="398" text-anchor="middle" fill="#8FA6C4" font-size="10">游客视角</text>
+              <circle cx="470" cy="150" r="14" fill="rgba(245,158,11,.2)"><animate attributeName="r" values="8;18;8" dur="2.4s" repeatCount="indefinite"/></circle>
+              <text x="470" y="128" text-anchor="middle" fill="#F59E0B" font-size="11" font-weight="bold">在线预览</text>
+            </svg>
+          </div>
+          <div class="hall-info">
+            <div class="hk">Culture Hall · 文化馆</div>
+            <h4>企业精神文化馆</h4>
+            <p>把"三精"战略、"四性一感"、老物件征集故事与企业荣誉搬进云端展厅，让客户与伙伴足不出户感受天门纺机的文化与温度。</p>
+            <div class="hmeta"><span>VR 全景</span><span>影像墙</span><span>荣誉展示</span><span>老物件故事</span></div>
+            <button class="btn btn-orange" style="align-self:flex-start" onclick="openModal('metaverse-culture')">进入在线预览</button>
+          </div>
+        </div>
+      </div>
+      <div class="hall" id="hall-museum">
+        <div class="hall-body">
+          <div class="hall-scene">
+            <svg viewBox="0 0 720 430">
+              <rect width="720" height="430" fill="#071222"/>
+              <defs><pattern id="hg2" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="rgba(120,170,230,.08)"/></pattern></defs>
+              <rect width="720" height="430" fill="url(#hg2)"/>
+              <text x="360" y="44" text-anchor="middle" fill="#9FB3CC" font-size="13">纺机博物馆 · 发展历程</text>
+              <!-- 老式纺机展品 -->
+              <g transform="translate(140,150)">
+                <rect x="0" y="30" width="90" height="60" rx="6" fill="rgba(16,42,71,.7)" stroke="#5CB3FF"/>
+                <circle cx="20" cy="80" r="16" fill="none" stroke="#F59E0B" stroke-width="3"/>
+                <rect x="36" y="50" width="20" height="6" rx="2" fill="#8FA6C4"/>
+                <line x1="90" y1="50" x2="150" y2="45" stroke="#8FA6C4" stroke-width="4"/>
+              </g>
+              <g transform="translate(300,150)">
+                <rect x="0" y="30" width="100" height="60" rx="6" fill="rgba(16,42,71,.7)" stroke="#5CB3FF"/>
+                <rect x="10" y="44" width="40" height="10" rx="2" fill="#1B7AD4"/>
+                <circle cx="80" cy="70" r="14" fill="none" stroke="#F59E0B" stroke-width="3"/>
+              </g>
+              <g transform="translate(470,150)">
+                <rect x="0" y="30" width="90" height="60" rx="6" fill="rgba(16,42,71,.7)" stroke="#5CB3FF"/>
+                <rect x="12" y="46" width="34" height="12" rx="2" fill="#10B981"/>
+                <rect x="54" y="46" width="24" height="12" rx="2" fill="#10B981"/>
+              </g>
+              <text x="185" y="248" text-anchor="middle" fill="#8FA6C4" font-size="10">1954 起步</text>
+              <text x="350" y="248" text-anchor="middle" fill="#8FA6C4" font-size="10">80 年代 · 并条机专业</text>
+              <text x="515" y="248" text-anchor="middle" fill="#8FA6C4" font-size="10">数字化 · 智并联时代</text>
+              <!-- 时间线 -->
+              <line x1="120" y1="290" x2="600" y2="290" stroke="rgba(245,158,11,.4)" stroke-width="2"/>
+              <circle cx="150" cy="290" r="5" fill="#F59E0B"/><circle cx="360" cy="290" r="5" fill="#F59E0B"/><circle cx="590" cy="290" r="5" fill="#F59E0B"/>
+              <circle cx="470" cy="150" r="14" fill="rgba(245,158,11,.2)"><animate attributeName="r" values="8;18;8" dur="2.4s" repeatCount="indefinite"/></circle>
+              <text x="470" y="128" text-anchor="middle" fill="#F59E0B" font-size="11" font-weight="bold">在线预览</text>
+            </svg>
+          </div>
+          <div class="hall-info">
+            <div class="hk">Museum · 博物馆</div>
+            <h4>纺机博物馆</h4>
+            <p>从 1954 年发轫到并条机行业标杆，老物件、老照片、历代机型与标准制定故事在此陈列，见证中国纺织装备自强之路。</p>
+            <div class="hmeta"><span>发展历程</span><span>老物件征集</span><span>历代机型</span><span>标准制定</span></div>
+            <button class="btn btn-orange" style="align-self:flex-start" onclick="openModal('metaverse-museum')">进入在线预览</button>
+          </div>
+        </div>
+      </div>
+      <div class="hall" id="hall-factory">
+        <div class="hall-body">
+          <div class="hall-scene">
+            <svg viewBox="0 0 720 430">
+              <rect width="720" height="430" fill="#071222"/>
+              <defs><pattern id="hg3" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="rgba(120,170,230,.08)"/></pattern></defs>
+              <rect width="720" height="430" fill="url(#hg3)"/>
+              <text x="360" y="44" text-anchor="middle" fill="#9FB3CC" font-size="13">数字工厂 · 虚拟漫游</text>
+              <!-- 产线 -->
+              <g transform="translate(120,160)">
+                <rect x="0" y="0" width="180" height="70" rx="8" fill="rgba(16,42,71,.7)" stroke="#5CB3FF"/>
+                <rect x="20" y="18" width="36" height="30" rx="4" fill="#0E4C92" stroke="#5CB3FF"/>
+                <rect x="70" y="18" width="36" height="30" rx="4" fill="#0E4C92" stroke="#5CB3FF"/>
+                <rect x="120" y="18" width="36" height="30" rx="4" fill="#0E4C92" stroke="#5CB3FF"/>
+                <rect x="16" y="58" width="148" height="8" rx="4" fill="rgba(27,122,212,.4)"/>
+              </g>
+              <!-- 数据大屏 -->
+              <rect x="360" y="150" width="240" height="110" rx="8" fill="rgba(4,12,24,.65)" stroke="rgba(245,158,11,.4)"/>
+              <text x="480" y="176" text-anchor="middle" fill="#9FB3CC" font-size="11">数字孪生看板</text>
+              <text x="390" y="204" fill="#5CB3FF" font-size="12">产量 <tspan fill="#F59E0B" font-weight="bold">128</tspan> 台</text>
+              <text x="480" y="204" fill="#5CB3FF" font-size="12">OEE <tspan fill="#10B981" font-weight="bold">91%</tspan></text>
+              <text x="390" y="228" fill="#5CB3FF" font-size="12">节拍 <tspan fill="#F59E0B" font-weight="bold">28s</tspan></text>
+              <text x="480" y="228" fill="#5CB3FF" font-size="12">AGV <tspan fill="#10B981" font-weight="bold">6</tspan> 台</text>
+              <!-- 漫游 -->
+              <circle cx="300" cy="330" r="7" fill="#10B981"/><line x1="300" y1="337" x2="300" y2="356" stroke="#10B981" stroke-width="3"/>
+              <path d="M300,356 q60,20 140,0" fill="none" stroke="rgba(245,158,11,.5)" stroke-width="2" stroke-dasharray="5 4"/>
+              <text x="300" y="378" text-anchor="middle" fill="#8FA6C4" font-size="10">虚拟漫游路径</text>
+              <circle cx="470" cy="150" r="14" fill="rgba(245,158,11,.2)"><animate attributeName="r" values="8;18;8" dur="2.4s" repeatCount="indefinite"/></circle>
+              <text x="470" y="128" text-anchor="middle" fill="#F59E0B" font-size="11" font-weight="bold">在线预览</text>
+            </svg>
+          </div>
+          <div class="hall-info">
+            <div class="hk">Digital Factory · 数字工厂</div>
+            <h4>数字工厂虚拟漫游</h4>
+            <p>以数字孪生为底座，漫游 AGV 物流、机器人产线、智能立库与总装车间，在线感受"会思考的工厂"如何运转。</p>
+            <div class="hmeta"><span>虚拟漫游</span><span>实时数据</span><span>产线孪生</span><span>透明化</span></div>
+            <button class="btn btn-orange" style="align-self:flex-start" onclick="openModal('metaverse-factory')">进入在线预览</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="meta-feats reveal">
+      <div class="mf"><div class="mi">🌐</div><div><b>云端永不落幕</b><span>线上展厅 24h 开放</span></div></div>
+      <div class="mf"><div class="mi">🕶️</div><div><b>沉浸式体验</b><span>360° 全景 / VR 漫游</span></div></div>
+      <div class="mf"><div class="mi">🖥️</div><div><b>即点即看</b><span>浏览器直接访问，无需安装</span></div></div>
+      <div class="mf"><div class="mi">🔗</div><div><b>孪生联动</b><span>元宇宙 × 数字孪生数据同频</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= 产品中心 ======= -->
+<section id="products" class="section-pad">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-tag">Products · 产品中心</div>
+      <div class="sec-title">会"说话"的产品 · <span class="hl">不止参数</span></div>
+      <p class="sec-sub">以模型、动画与场景呈现产品价值——从"天鹤"牌并条机到"智并联"产线联动，让每一项创新看得见。</p>
+    </div>
+    <div class="prod-filter reveal" id="prodFilter">
+      <button class="pf active" data-f="all">全部</button>
+      <button class="pf" data-f="draw">并条机</button>
+      <button class="pf" data-f="spin">细纱机</button>
+      <button class="pf" data-f="tool">智能附件</button>
+    </div>
+    <div class="prod-grid" id="prodGrid">
+      <div class="prod-card reveal" data-cat="draw">
+        <span class="badge new">创新</span>
+        <div class="model"><svg viewBox="0 0 160 120"><rect x="20" y="20" width="120" height="80" rx="8" fill="rgba(27,122,212,.25)" stroke="#5CB3FF"/><rect x="34" y="34" width="92" height="30" rx="4" fill="rgba(14,76,146,.5)"/><circle cx="46" cy="88" r="12" fill="none" stroke="#F59E0B" stroke-width="3"/><circle cx="46" cy="88" r="4" fill="#F59E0B"/><circle cx="110" cy="88" r="12" fill="none" stroke="#F59E0B" stroke-width="3"/><circle cx="110" cy="88" r="4" fill="#F59E0B"/></svg></div>
+        <h3>TM29 自调匀整并条机</h3>
+        <div class="tag">T2 系列 · 智并联 · 高速高产</div>
+        <div class="specs"><div><b>900</b><span>m/min 输出</span></div><div><b>1000</b><span>mm 卷装</span></div><div><b>USG3</b><span>匀整系统</span></div></div>
+      </div>
+      <div class="prod-card reveal" data-cat="draw">
+        <span class="badge new">创新</span>
+        <div class="model"><svg viewBox="0 0 160 120"><rect x="20" y="20" width="120" height="80" rx="8" fill="rgba(27,122,212,.25)" stroke="#5CB3FF"/><rect x="34" y="34" width="92" height="30" rx="4" fill="rgba(14,76,146,.5)"/><circle cx="46" cy="88" r="12" fill="none" stroke="#F59E0B" stroke-width="3"/><circle cx="46" cy="88" r="4" fill="#F59E0B"/><circle cx="110" cy="88" r="12" fill="none" stroke="#F59E0B" stroke-width="3"/><circle cx="110" cy="88" r="4" fill="#F59E0B"/><line x1="60" y1="30" x2="100" y2="30" stroke="#10B981" stroke-width="2" stroke-dasharray="3 3"/></svg></div>
+        <h3>TM35 超大卷装并条机</h3>
+        <div class="tag">T2 系列 · 大卷装 · 长时不停机</div>
+        <div class="specs"><div><b>1000</b><span>mm×1200</span></div><div><b>多备筒</b><span>自动换筒</span></div><div><b>UQM</b><span>在线监控</span></div></div>
+      </div>
+      <div class="prod-card reveal" data-cat="draw">
+        <span class="badge hot">畅销</span>
+        <div class="model"><svg viewBox="0 0 160 120"><rect x="20" y="20" width="120" height="80" rx="8" fill="rgba(27,122,212,.25)" stroke="#5CB3FF"/><rect x="34" y="34" width="92" height="30" rx="4" fill="rgba(14,76,146,.5)"/><circle cx="46" cy="88" r="12" fill="none" stroke="#F59E0B" stroke-width="3"/><circle cx="46" cy="88" r="4" fill="#F59E0B"/><circle cx="110" cy="88" r="12" fill="none" stroke="#F59E0B" stroke-width="3"/><circle cx="110" cy="88" r="4" fill="#F59E0B"/></svg></div>
+        <h3>TM19 高速并条机</h3>
+        <div class="tag">经典机型 · 自调匀整 · 稳定可靠</div>
+        <div class="specs"><div><b>800</b><span>m/min 输出</span></div><div><b>2眼</b><span>高速高产</span></div><div><b>Φ1000</b><span>大卷装</span></div></div>
+      </div>
+      <div class="prod-card reveal" data-cat="spin">
+        <span class="badge hot">明星</span>
+        <div class="model"><svg viewBox="0 0 160 120"><rect x="30" y="14" width="100" height="70" rx="8" fill="rgba(27,122,212,.25)" stroke="#5CB3FF"/><rect x="44" y="26" width="72" height="20" rx="4" fill="rgba(14,76,146,.5)"/><line x1="50" y1="60" x2="50" y2="100" stroke="#5CB3FF" stroke-width="2"/><line x1="90" y1="60" x2="90" y2="100" stroke="#5CB3FF" stroke-width="2"/><line x1="70" y1="60" x2="70" y2="100" stroke="#5CB3FF" stroke-width="2"/><path d="M50,100 q20,-14 40,0 q-20,14 -40,0" fill="rgba(245,158,11,.5)"/></svg></div>
+        <h3>TM65 集落环锭细纱机</h3>
+        <div class="tag">全数字化 · 智能落纱 · 节能高效</div>
+        <div class="specs"><div><b>智能</b><span>集落系统</span></div><div><b>节能</b><span>高效驱动</span></div><div><b>数字化</b><span>全流程</span></div></div>
+      </div>
+      <div class="prod-card reveal" data-cat="draw">
+        <div class="model"><svg viewBox="0 0 160 120"><rect x="20" y="20" width="120" height="80" rx="8" fill="rgba(27,122,212,.25)" stroke="#5CB3FF"/><rect x="34" y="34" width="92" height="30" rx="4" fill="rgba(14,76,146,.5)"/><circle cx="78" cy="84" r="14" fill="none" stroke="#F59E0B" stroke-width="3"/><circle cx="78" cy="84" r="4" fill="#F59E0B"/></svg></div>
+        <h3>TMFD81 系列并条机</h3>
+        <div class="tag">经典系列 · 多规格 · 全场景适配</div>
+        <div class="specs"><div><b>多规格</b><span>FA/TMFD</span></div><div><b>自主</b><span>知识产权</span></div><div><b>80+</b><span>规格型号</span></div></div>
+      </div>
+      <div class="prod-card reveal" data-cat="tool">
+        <span class="badge new">智能</span>
+        <div class="model"><svg viewBox="0 0 160 120"><rect x="30" y="30" width="100" height="60" rx="10" fill="rgba(16,185,129,.15)" stroke="#10B981"/><rect x="42" y="44" width="76" height="10" rx="3" fill="rgba(16,185,129,.5)"/><circle cx="56" cy="72" r="6" fill="#10B981"/><circle cx="80" cy="72" r="6" fill="#10B981"/><circle cx="104" cy="72" r="6" fill="#10B981"/><line x1="140" y1="60" x2="148" y2="60" stroke="#10B981" stroke-width="3"/><path d="M148,54 L158,60 L148,66 z" fill="#10B981"/></svg></div>
+        <h3>并条机远程工具 · IoT</h3>
+        <div class="tag">物联网 · 云数据 · 远程运维</div>
+        <div class="specs"><div><b>IoT</b><span>联网管理</span></div><div><b>云</b><span>数据存储</span></div><div><b>远程</b><span>运维诊断</span></div></div>
+      </div>
+      <div class="prod-card reveal" data-cat="draw">
+        <div class="model"><svg viewBox="0 0 160 120"><rect x="20" y="20" width="120" height="80" rx="8" fill="rgba(27,122,212,.25)" stroke="#5CB3FF"/><rect x="34" y="34" width="92" height="30" rx="4" fill="rgba(14,76,146,.5)"/><circle cx="46" cy="88" r="12" fill="none" stroke="#F59E0B" stroke-width="3"/><circle cx="46" cy="88" r="4" fill="#F59E0B"/><circle cx="110" cy="88" r="12" fill="none" stroke="#F59E0B" stroke-width="3"/><circle cx="110" cy="88" r="4" fill="#F59E0B"/></svg></div>
+        <h3>TM23 / TM25 / TM27</h3>
+        <div class="tag">新一代 T1 系列 · 智能升级</div>
+        <div class="specs"><div><b>联动</b><span>产线智并联</span></div><div><b>工艺</b><span>自动诊断</span></div><div><b>数据</b><span>全面读取</span></div></div>
+      </div>
+      <div class="prod-card reveal" data-cat="tool">
+        <div class="model"><svg viewBox="0 0 160 120"><rect x="40" y="30" width="80" height="60" rx="10" fill="rgba(245,158,11,.12)" stroke="#F59E0B"/><text x="80" y="66" text-anchor="middle" fill="#F59E0B" font-size="22" font-weight="bold">AI</text></svg></div>
+        <h3>智能运维 · 数字化服务</h3>
+        <div class="tag">预测性维护 · 智能排产 · 数字看板</div>
+        <div class="specs"><div><b>预测</b><span>维护</span></div><div><b>智能</b><span>排产</span></div><div><b>看板</b><span>透明化</span></div></div>
+      </div>
+    </div>
+
+    <!-- 创新产品：智并联 -->
+    <div class="innovative">
+      <div class="innov-card reveal">
+        <div class="k">Innovation · 开行业先河</div>
+        <h3>"智并联"并条产线联动技术</h3>
+        <p>打破传统"单机、单元"模式，实现并条前后工序的运动控制、数据读取、分析管理与工艺诊断，开启并条产线联动时代。</p>
+        <div class="flow">
+          <div class="fm"><div class="dotm">1</div>运动控制<br>联动</div>
+          <span class="farrow">➜</span>
+          <div class="fm"><div class="dotm">2</div>数据读取<br>分析</div>
+          <span class="farrow">➜</span>
+          <div class="fm"><div class="dotm">3</div>工艺诊断<br>智并联</div>
+        </div>
+      </div>
+      <div class="innov-card reveal">
+        <div class="k">Innovation · 数智化</div>
+        <h3>T2 / T3 系列 · 数字化纺纱方案</h3>
+        <p>以高性能并条机为核，配套数字孪生与智能运维，为纺织企业技改、新建产线提供"设备+软件+服务"一体化解决方案，助力行业普及智能化改造。</p>
+        <div class="flow">
+          <div class="fm"><div class="dotm">A</div>设备<br>智联</div>
+          <span class="farrow">➜</span>
+          <div class="fm"><div class="dotm">B</div>数据<br>中台</div>
+          <span class="farrow">➜</span>
+          <div class="fm"><div class="dotm">C</div>数字<br>孪生</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= 全球市场 ======= -->
+<section id="market" class="section-pad">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-tag">Global Market · 全球市场</div>
+      <div class="sec-title">从中国天门，到<span class="hl">全世界</span></div>
+      <p class="sec-sub">产品覆盖全国，辐射"一带一路"沿线及中非、南美等国家和地区——以品质与服务赢得全球信赖。</p>
+    </div>
+    <div class="market-wrap">
+      <div class="map-box reveal">
+        <div class="map-title"><span>全球业务布局 · Global Footprint</span><span>（数据来源：中国纺织机械协会）</span></div>
+        <svg viewBox="0 0 1000 500" id="worldMap">
+          <defs>
+            <radialGradient id="glow"><stop offset="0%" stop-color="rgba(245,158,11,.9)"/><stop offset="100%" stop-color="rgba(245,158,11,0)"/></radialGradient>
+            <radialGradient id="glowB"><stop offset="0%" stop-color="rgba(27,122,212,.85)"/><stop offset="100%" stop-color="rgba(27,122,212,0)"/></radialGradient>
+          </defs>
+          <rect width="1000" height="500" fill="transparent"/>
+          <!-- 大陆简图 -->
+          <g fill="rgba(120,170,230,.16)" stroke="rgba(120,170,230,.35)" stroke-width="1">
+            <path d="M10,128 Q30,90 80,72 Q120,55 165,60 Q210,68 250,88 Q285,108 300,140 Q310,170 300,205 Q280,238 255,265 Q215,290 175,300 Q140,298 118,278 Q92,250 72,215 Q45,175 10,128 Z"/>
+            <path d="M250,150 Q280,130 320,122 Q360,118 395,125 Q420,135 435,155 Q445,180 440,210 Q430,245 410,270 Q385,292 355,300 Q330,300 315,285 Q295,258 278,225 Q258,188 250,150 Z"/>
+            <path d="M320,90 Q340,60 375,45 Q410,33 445,38 Q475,48 495,68 Q508,92 505,115 Q498,135 482,150 Q460,162 435,163 Q410,160 392,148 Q368,130 348,112 Q330,102 320,90 Z"/>
+            <path d="M470,95 Q500,80 540,75 Q580,72 618,80 Q655,92 682,115 Q700,140 705,168 Q708,195 700,218 Q688,238 670,250 Q648,262 622,268 Q595,272 568,268 Q545,258 528,240 Q508,215 492,190 Q478,168 470,145 Q462,120 470,95 Z"/>
+            <path d="M620,70 Q645,45 685,32 Q730,22 775,30 Q815,42 845,62 Q872,88 888,118 Q900,150 905,180 Q906,208 895,228 Q878,242 858,238 Q842,228 832,212 Q820,190 812,170 Q800,150 782,138 Q760,130 738,132 Q718,138 704,152 Q690,170 678,190 Q665,170 650,152 Q628,128 610,108 Q616,88 620,70 Z"/>
+            <path d="M855,310 Q885,300 915,308 Q945,318 960,340 Q968,362 955,380 Q935,392 905,390 Q880,382 868,362 Q860,340 855,310 Z"/>
+            <path d="M430,300 Q455,295 478,302 Q500,312 508,332 Q512,352 500,368 Q482,378 458,376 Q438,370 428,354 Q422,336 430,300 Z"/>
+          </g>
+          <!-- 点位 -->
+          <g id="mapPins"></g>
+          <!-- 连线 -->
+          <g stroke="rgba(245,158,11,.28)" stroke-width="1.2" fill="none" id="mapLines"></g>
+        </svg>
+        <div class="map-legend">
+          <span><i style="background:var(--accent)"></i>核心市场</span>
+          <span><i style="background:var(--primary-l)"></i>覆盖区域</span>
+          <span><i style="background:var(--ok)"></i>海外机构/代理</span>
+        </div>
+      </div>
+      <div class="market-data reveal">
+        <div class="md">
+          <div class="big">40<em>%+</em></div>
+          <div style="flex:1"><p><b>国内市场占有率</b>，连续多年位列行业第一（中国纺织机械协会）</p><div class="bar"><i data-w="92"></i></div></div>
+        </div>
+        <div class="md">
+          <div class="big">TOP3</div>
+          <div style="flex:1"><p><b>国际市场占有率</b>稳居全球前三</p><div class="bar"><i data-w="72"></i></div></div>
+        </div>
+        <div class="md">
+          <div class="big">5.5<em>亿</em></div>
+          <div style="flex:1"><p><b>2026 销售目标</b> · 订单覆盖新疆、江苏、浙江、福建及海外</p><div class="bar"><i data-w="82"></i></div></div>
+        </div>
+        <div class="md">
+          <div class="big">80<em>+</em></div>
+          <div style="flex:1"><p><b>规格型号</b> · 服务全球棉纺客户，助力纺织企业智能化升级</p><div class="bar"><i data-w="88"></i></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= 新闻中心 ======= -->
+<section id="news" class="section-pad" style="background:linear-gradient(180deg,#071527,#0A1E38)">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-tag">News Center · 新闻中心</div>
+      <div class="sec-title">公司动态 · 行业观察 · <span class="hl">企业活动</span> · 培训资源</div>
+    </div>
+    <div class="news-tabs reveal" id="newsTabs">
+      <button class="nt active" data-n="company">公司新闻</button>
+      <button class="nt" data-n="industry">行业新闻</button>
+      <button class="nt" data-n="activity">企业活动</button>
+    </div>
+    <div class="news-grid" id="newsGrid">
+      <!-- 公司新闻 -->
+      <div class="news-card reveal" data-news="company">
+        <div class="npic"><div style="font-size:44px">🏭</div><span class="ndate">2026-08-26</span></div>
+        <div class="nbody"><h4>全城"寻宝" | 天门纺机征集老物件及员工影像，共忆峥嵘岁月</h4><p>面向全社会征集与天门纺机共同成长的老物件与影像资料，为文化馆建设注入历史温度。</p><span class="more">查看详情 →</span></div>
+      </div>
+      <div class="news-card reveal" data-news="company">
+        <div class="npic"><div style="font-size:44px">🎓</div><span class="ndate">2026-08-17</span></div>
+        <div class="nbody"><h4>共建智匠工坊 深化产教融合 | 天门职业学院与天门纺机合作再升级</h4><p>校企共建"智匠工坊"，联合培养智能制造与数字化人才，为高质量发展蓄势。</p><span class="more">查看详情 →</span></div>
+      </div>
+      <div class="news-card reveal" data-news="company">
+        <div class="npic"><div style="font-size:44px">🏅</div><span class="ndate">2026-04-18</span></div>
+        <div class="nbody"><h4>从手工作坊到数字孪生工厂 | 天门纺机获评湖北省数字孪生工厂</h4><p>AGV 穿梭、机械臂作业、智能看板数据实时跳动——数字化成果获权威认可。</p><span class="more">查看详情 →</span></div>
+      </div>
+      <!-- 行业新闻 -->
+      <div class="news-card reveal" data-news="industry" style="display:none">
+        <div class="npic"><div style="font-size:44px">🌏</div><span class="ndate">2026-08-28</span></div>
+        <div class="nbody"><h4>向 50 亿元冲刺！天门装备制造产业加速向"智造"转型</h4><p>作为装备制造"老牌劲旅"，天门纺机推进智改数转，加快中试基地与智慧工厂落地。</p><span class="more">查看详情 →</span></div>
+      </div>
+      <div class="news-card reveal" data-news="industry" style="display:none">
+        <div class="npic"><div style="font-size:44px">📈</div><span class="ndate">2026-07-09</span></div>
+        <div class="nbody"><h4>天门纺机与江苏鑫满润签下 15 万锭项目并条设备订单</h4><p>产品凭借高稳定性、高性价比，成为纺织企业技改、新建产线优选设备。</p><span class="more">查看详情 →</span></div>
+      </div>
+      <div class="news-card reveal" data-news="industry" style="display:none">
+        <div class="npic"><div style="font-size:44px">🧵</div><span class="ndate">2026-02-05</span></div>
+        <div class="nbody"><h4>"十四五"中国纺机行业这样走过 | 迈向智造强国新征程</h4><p>需求驱动、技术革新与政策加持下，纺机行业加速数字化、绿色化转型。</p><span class="more">查看详情 →</span></div>
+      </div>
+      <!-- 企业活动 -->
+      <div class="news-card reveal" data-news="activity" style="display:none">
+        <div class="npic"><div style="font-size:44px">🖥️</div><span class="ndate">2026-08</span></div>
+        <div class="nbody"><h4>智慧工厂开放日 | 欢迎各界来宾参观智能产线与数字孪生体验厅</h4><p>沉浸式参观 AGV 物流、机器人产线、智能立库，近距离感受智能制造魅力。</p><span class="more">预约参观 →</span></div>
+      </div>
+      <div class="news-card reveal" data-news="activity" style="display:none">
+        <div class="npic"><div style="font-size:44px">🎓</div><span class="ndate">2026-08</span></div>
+        <div class="nbody"><h4>培训学院开课 | 并条机操作与维护系列课程上线</h4><p>面向客户与合作伙伴，提供设备操作、工艺调试、维护保养在线培训资源。</p><span class="more">进入培训学院 →</span></div>
+      </div>
+      <div class="news-card reveal" data-news="activity" style="display:none">
+        <div class="npic"><div style="font-size:44px">❤️</div><span class="ndate">2026-08-01</span></div>
+        <div class="nbody"><h4>情暖桑榆 薪火相传 | 天门纺机温情欢送退休老员工</h4><p>传承匠心精神，让每一位奋斗者被看见、被尊重——企业文化落地生根。</p><span class="more">查看详情 →</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= 培训学院 ======= -->
+<section id="academy" class="section-pad" style="background:linear-gradient(180deg,#0A1E38,#071527)">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-tag">Training Academy · 培训学院</div>
+      <div class="sec-title">培训学院 · <span class="hl">在线学习</span></div>
+      <p class="sec-sub">面向客户与合作伙伴开放的操作、工艺、维护与数字化课程，支持在线学习与进度记录；未来将持续上线更多视频内容。</p>
+    </div>
+    <div class="course-grid reveal">
+      <div class="course">
+        <div class="cpic">🎬<span class="cat">操作</span><span class="dur">18:30</span></div>
+        <div class="cbody"><h4>并条机 TM 系列 · 开机与操作规范</h4><p>从通电自检、参数调用到正常出条，手把手掌握标准操作流程。</p><span class="learn" onclick="openModal('academy')">▶ 在线学习</span></div>
+      </div>
+      <div class="course">
+        <div class="cpic">⚙️<span class="cat">工艺</span><span class="dur">26:00</span></div>
+        <div class="cbody"><h4>自调匀整与棉条质量工艺调试</h4><p>理解 USG3 匀整系统原理，掌握 CV% 与重量偏差的在线调优方法。</p><span class="learn" onclick="openModal('academy')">▶ 在线学习</span></div>
+      </div>
+      <div class="course">
+        <div class="cpic">🔧<span class="cat">维护</span><span class="dur">32:00</span></div>
+        <div class="cbody"><h4>日常维护保养与故障排查</h4><p>皮辊清洁、集中润滑、常见告警处理，延长设备寿命、保障连续生产。</p><span class="learn" onclick="openModal('academy')">▶ 在线学习</span></div>
+      </div>
+      <div class="course">
+        <div class="cpic">📊<span class="cat">数字化</span><span class="dur">20:00</span></div>
+        <div class="cbody"><h4>数字化纺纱与并条机数据应用</h4><p>从数据读取到工艺诊断，掌握"智并联"产线联动的数据化运维。</p><span class="learn" onclick="openModal('academy')">▶ 在线学习</span></div>
+      </div>
+      <div class="course">
+        <div class="cpic">🛡️<span class="cat">安全</span><span class="dur">12:00</span></div>
+        <div class="cbody"><h4>车间安全操作与应急处置</h4><p>设备安全防护、危险源辨识与应急停机规范，保障人员与设备安全。</p><span class="learn" onclick="openModal('academy')">▶ 在线学习</span></div>
+      </div>
+      <div class="course">
+        <div class="cpic">📚<span class="cat">资料</span><span class="dur">图文</span></div>
+        <div class="cbody"><h4>技术手册与 FAQ 知识库</h4><p>说明书、维护手册、常见问题一键查阅，随学随用。</p><span class="learn" onclick="openModal('academy')">▶ 进入资料库</span></div>
+      </div>
+    </div>
+    <div class="academy-note reveal">
+      <span>📌 培训学院将逐步上线视频课程，支持<b style="color:#F59E0B">在线学习、进度记录</b>与学习档案，客户与合作伙伴可持续成长。</span>
+      <button class="btn btn-orange" onclick="openModal('academy')">前往在线学习</button>
+    </div>
+  </div>
+</section>
+
+<!-- ======= 双门户 ======= -->
+<section id="portals" class="section-pad">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-tag">Ecosystem · 生态门户</div>
+      <div class="sec-title">一个平台，<span class="hl">连接客户与供应商</span></div>
+      <p class="sec-sub">面向客户的在线服务门户与面向供应商的供应链协同门户，打通"服务提出→进度跟踪"与"需求发布→响应评级"的完整闭环。（点击卡片体验 DEMO）</p>
+    </div>
+    <div class="portal-grid">
+      <div class="portal cust reveal" onclick="openModal('customer')">
+        <div class="p-ic">👥</div>
+        <h3>客户门户</h3>
+        <p>对接客户资料与客户信息，在线发起服务申请、报修与配件需求，实时跟踪服务处理进度。</p>
+        <div class="tags"><span>我的档案</span><span>服务申请</span><span>进度跟踪</span><span>配件订购</span><span>培训资料</span></div>
+        <div class="mock">
+          <div class="row"><span>服务单 #SF20260902-018</span><span class="st-tag g">处理中</span></div>
+          <div class="row"><span>配件订单 #P20260901-032</span><span class="st-tag b">待发货</span></div>
+          <div class="row"><span>年度维保计划</span><span class="st-tag y">已排程</span></div>
+        </div>
+        <div class="go">进入客户门户</div>
+      </div>
+      <div class="portal supp reveal" onclick="openModal('supplier')">
+        <div class="p-ic">🔗</div>
+        <h3>供应商门户</h3>
+        <p>接入供应链系统，管理供应商库与评级，查看供应需求（RFQ）、在线响应并更新交付进度。</p>
+        <div class="tags"><span>注册入库</span><span>需求响应</span><span>绩效评级</span><span>进度更新</span></div>
+        <div class="mock">
+          <div class="row"><span>需求 #RFQ-0902-05 钣金件</span><span class="st-tag y">响应中</span></div>
+          <div class="row"><span>本季度评级</span><span class="st-tag g">A 级</span></div>
+          <div class="row"><span>交付准时率 98.6%</span><span class="st-tag b">优秀</span></div>
+        </div>
+        <div class="go">进入供应商门户</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= 底部 ======= -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="logo" href="#hero"><span class="mk">天</span><span>天门纺机<small>HUBEI TIANMEN TEXTILE MACHINERY</small></span></a>
+        <p style="color:var(--text-dim);font-size:13.5px;margin:16px 0">以文化铸魂、以数智展实力、以门户做连接——做民族工业精益表率，做纺织装备领先企业。</p>
+        <p style="color:#6E86A5;font-size:12.5px">湖北省天门市经济开发区天仙大道11号<br>销售：0728-5250688 · 服务：0728-5250868</p>
+      </div>
+      <div>
+        <h5>关于</h5>
+        <ul><li><a href="#culture">企业文化</a></li><li><a href="#honor">荣誉实力</a></li><li><a href="#factory">智慧工厂</a></li><li><a href="#metaverse">元宇宙</a></li></ul>
+      </div>
+      <div>
+        <h5>服务</h5>
+        <ul><li><a href="#portals">客户门户</a></li><li><a href="#portals">供应商门户</a></li><li><a href="#academy">培训学院</a></li><li><a href="#twin">技术支持</a></li></ul>
+      </div>
+      <div>
+        <h5>连接</h5>
+        <ul><li><a href="#" onclick="openModal('consult');return false">预约参观</a></li><li><a href="#" onclick="openModal('consult');return false">在线询价</a></li><li><a href="#news">新闻中心</a></li><li><a href="#hero">返回顶部</a></li></ul>
+      </div>
+    </div>
+    <div class="foot-copy">
+      <span>© 2026 湖北天门纺织机械股份有限公司 · 新官网示范 DEMO（示意内容，正式数据以实际为准）</span>
+      <span>鄂ICP备10014183号 · 鄂公网安备 42900602000339</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ======= 通用弹窗 ======= -->
+<div class="modal-mask" id="modalMask">
+  <div class="modal">
+    <button class="close" onclick="closeModal()">✕</button>
+    <!-- 客户门户 -->
+    <div id="m-customer" class="m-page">
+      <h3>客户门户 · Customer Portal</h3>
+      <p class="msub">登录后查看客户档案、发起服务申请并跟踪进度（DEMO 演示）</p>
+      <div class="mtabs">
+        <button class="mtab active" onclick="switchTab(this,'c-login')">登录</button>
+        <button class="mtab" onclick="switchTab(this,'c-svc')">服务申请</button>
+        <button class="mtab" onclick="switchTab(this,'c-prog')">服务进度</button>
+      </div>
+      <div id="c-login" class="tabp">
+        <div class="frm">
+          <div class="fr"><label>企业名称</label><input placeholder="请输入企业全称"></div>
+          <div class="f2"><div class="fr"><label>账号</label><input placeholder="手机号 / 客户编号"></div><div class="fr"><label>密码</label><input type="password" placeholder="请输入密码"></div></div>
+          <button class="btn btn-orange" style="justify-content:center" onclick="mockLogin('c-svc')">登录客户门户</button>
+        </div>
+      </div>
+      <div id="c-svc" class="tabp" style="display:none">
+        <div class="frm">
+          <div class="f2"><div class="fr"><label>服务类型</label><select><option>设备报修</option><option>配件订购</option><option>技术支持</option><option>维保服务</option></select></div><div class="fr"><label>设备型号</label><select><option>TM29 并条机</option><option>TM35 并条机</option><option>TM19 并条机</option><option>TM65 细纱机</option></select></div></div>
+          <div class="fr"><label>问题描述</label><textarea rows="3" placeholder="请描述故障现象或需求，便于快速响应"></textarea></div>
+          <button class="btn btn-orange" style="justify-content:center" onclick="submitSvc()">提交服务申请</button>
+        </div>
+      </div>
+      <div id="c-prog" class="tabp" style="display:none">
+        <div class="progress">
+          <div class="pstep done"><div class="pc">✓</div><div class="pt"><b>已受理</b><span>2026-09-01 09:12 服务申请已提交并受理</span></div></div>
+          <div class="pstep done"><div class="pc">✓</div><div class="pt"><b>已派单</b><span>2026-09-01 14:30 已指派工程师 · 张三（服务组）</span></div></div>
+          <div class="pstep now"><div class="pc">3</div><div class="pt"><b>处理中</b><span>工程师已到达现场，预计 09-03 完成</span></div></div>
+          <div class="pstep"><div class="pc">4</div><div class="pt"><b>待验收</b><span>完成后客户在线确认</span></div></div>
+          <div class="pstep"><div class="pc">5</div><div class="pt"><b>已关闭</b><span>服务评价与档案归档</span></div></div>
+        </div>
+      </div>
+    </div>
+    <!-- 供应商门户 -->
+    <div id="m-supplier" class="m-page" style="display:none">
+      <h3>供应商门户 · Supplier Portal</h3>
+      <p class="msub">接入供应链系统：需求响应、绩效评级、进度更新（DEMO 演示）</p>
+      <div class="mtabs">
+        <button class="mtab active" onclick="switchTab(this,'s-rfq')">供应需求</button>
+        <button class="mtab" onclick="switchTab(this,'s-rate')">绩效评级</button>
+        <button class="mtab" onclick="switchTab(this,'s-reg')">注册入库</button>
+      </div>
+      <div id="s-rfq" class="tabp">
+        <div style="display:grid;gap:10px">
+          <div class="rfq"><div class="r-t"><b>RFQ-0902-05 · 钣金结构件（折弯）</b><span>数量 2,000 件 · 交期 09-25 · 截止响应 09-05</span></div><span class="r-act" onclick="rfqAct(this)">立即响应</span></div>
+          <div class="rfq"><div class="r-t"><b>RFQ-0902-03 · 标准件 / 轴承</b><span>数量 5,000 件 · 交期 09-20 · 截止响应 09-04</span></div><span class="r-act" onclick="rfqAct(this)">立即响应</span></div>
+          <div class="rfq"><div class="r-t"><b>RFQ-0901-12 · 电机及电气件</b><span>数量 300 台 · 交期 10-10 · 截止响应 09-08</span></div><span class="r-act" onclick="rfqAct(this)">立即响应</span></div>
+        </div>
+      </div>
+      <div id="s-rate" class="tabp" style="display:none">
+        <div class="frm">
+          <div class="metric"><span class="m-l">本季度综合评级</span><span class="m-v" style="color:var(--accent)">A 级</span></div>
+          <div class="metric"><span class="m-l">交付准时率</span><span class="m-v up">98.6%</span></div>
+          <div class="metric"><span class="m-l">来料合格率（IQC）</span><span class="m-v up">99.2%</span></div>
+          <div class="metric"><span class="m-l">价格竞争力 / 配合度</span><span class="m-v">A / A</span></div>
+          <p style="font-size:12.5px;color:var(--text-dim)">评级维度：质量（IQC）· 交付 · 价格 · 配合度 → 综合评定 A/B/C 三级，评级结果影响合作配额与优先结算。</p>
+        </div>
+      </div>
+      <div id="s-reg" class="tabp" style="display:none">
+        <div class="frm">
+          <div class="fr"><label>供应商名称</label><input placeholder="企业全称"></div>
+          <div class="f2"><div class="fr"><label>主营品类</label><select><option>钣金/结构件</option><option>标准件/轴承</option><option>电机/电气</option><option>铸锻件</option></select></div><div class="fr"><label>联系人</label><input placeholder="姓名"></div></div>
+          <button class="btn btn-orange" style="justify-content:center" onclick="submitSvc()">提交入库申请</button>
+        </div>
+      </div>
+    </div>
+    <!-- 预约参观 / 咨询 -->
+    <div id="m-consult" class="m-page" style="display:none">
+      <h3>预约参观 / 在线询价</h3>
+      <p class="msub">走进智慧工厂，了解天门纺机数字化实力（DEMO 演示）</p>
+      <div class="frm">
+        <div class="f2"><div class="fr"><label>您的称呼</label><input placeholder="姓名"></div><div class="fr"><label>联系电话</label><input placeholder="手机号"></div></div>
+        <div class="fr"><label>所在企业 / 机构</label><input placeholder="企业全称"></div>
+        <div class="f2"><div class="fr"><label>意向</label><select><option>预约参观智慧工厂</option><option>并条机询价</option><option>细纱机询价</option><option>数字化方案咨询</option><option>校企合作</option></select></div><div class="fr"><label>期望时间</label><input placeholder="如 09-10 上午"></div></div>
+        <div class="fr"><label>留言</label><textarea rows="3" placeholder="简单描述您的需求"></textarea></div>
+        <button class="btn btn-orange" style="justify-content:center" onclick="submitSvc()">提交预约 / 询价</button>
+      </div>
+    </div>
+    <!-- 文化馆 -->
+    <div id="m-culture" class="m-page" style="display:none">
+      <h3>企业精神文化馆</h3>
+      <p class="msub">以文化凝聚力量 · 让匠心被看见（示意内容）</p>
+      <div class="frm" style="gap:10px">
+        <div class="metric"><span class="m-l">企业愿景</span><span class="m-v" style="font-size:16px">当民族工业精益表率 · 做纺织装备领先企业</span></div>
+        <div class="metric"><span class="m-l">三精战略</span><span class="m-v" style="font-size:16px">提精神 · 创精品 · 当精英</span></div>
+        <div class="metric"><span class="m-l">四性一感</span><span class="m-v" style="font-size:16px">先进性 · 稳定性 · 可靠性 · 可操作性 · 体验感</span></div>
+        <div class="metric"><span class="m-l">经营理念</span><span class="m-v" style="font-size:16px">利他共赢 · 优化社会/市场/内部生态</span></div>
+        <p style="font-size:13px;color:var(--text-dim)">文化馆将通过图文、影像与互动装置，全景呈现天门纺机 60 余年匠心传承与数字化转型故事。</p>
+      </div>
+    </div>
+    <!-- 元宇宙：文化馆在线预览 -->
+    <div id="m-metaverse-culture" class="m-page" style="display:none">
+      <h3>云上文化馆 · 在线预览</h3>
+      <p class="msub">360° 全景虚拟展厅（DEMO 示意，正式版为 3D 漫游）</p>
+      <div style="border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#071222">
+        <svg viewBox="0 0 720 320" style="width:100%;display:block">
+          <rect width="720" height="320" fill="url(#none)" style="fill:#081B33"/>
+          <polygon points="40,280 40,90 340,50 340,240" fill="rgba(14,76,146,.3)" stroke="#5CB3FF"/>
+          <polygon points="340,240 340,50 680,90 680,280" fill="rgba(16,42,71,.55)" stroke="#5CB3FF"/>
+          <rect x="120" y="130" width="200" height="80" rx="8" fill="rgba(4,12,24,.6)" stroke="rgba(245,158,11,.5)"/>
+          <text x="220" y="162" text-anchor="middle" fill="#F59E0B" font-size="14" font-weight="bold">三精战略</text>
+          <text x="220" y="188" text-anchor="middle" fill="#fff" font-size="12">提精神 · 创精品 · 当精英</text>
+          <rect x="400" y="130" width="200" height="80" rx="8" fill="rgba(4,12,24,.6)" stroke="#5CB3FF"/>
+          <text x="500" y="162" text-anchor="middle" fill="#9FB3CC" font-size="12">荣誉与影像墙</text>
+          <text x="500" y="184" text-anchor="middle" fill="#fff" font-size="11">🏅 单项冠军 · 小巨人 · CE</text>
+          <circle cx="360" cy="260" r="7" fill="#10B981"/><line x1="360" y1="267" x2="360" y2="286" stroke="#10B981" stroke-width="3"/>
+          <text x="360" y="302" text-anchor="middle" fill="#8FA6C4" font-size="11">360° 漫游视角</text>
+        </svg>
+      </div>
+      <p style="font-size:12.5px;color:var(--text-dim);margin-top:14px">支持鼠标拖拽旋转视角、点击展品查看详情；可对接 VR 设备获得沉浸式体验。</p>
+    </div>
+    <!-- 元宇宙：纺机博物馆在线预览 -->
+    <div id="m-metaverse-museum" class="m-page" style="display:none">
+      <h3>纺机博物馆 · 在线预览</h3>
+      <p class="msub">穿越 60 余年，见证中国纺织装备自强之路（DEMO 示意）</p>
+      <div style="border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#071222">
+        <svg viewBox="0 0 720 320" style="width:100%;display:block">
+          <rect width="720" height="320" style="fill:#081B33"/>
+          <text x="360" y="44" text-anchor="middle" fill="#9FB3CC" font-size="13">发展历程展墙</text>
+          <rect x="60" y="90" width="600" height="150" rx="10" fill="rgba(16,42,71,.5)" stroke="#5CB3FF"/>
+          <line x1="110" y1="165" x2="610" y2="165" stroke="rgba(245,158,11,.5)" stroke-width="2"/>
+          <circle cx="130" cy="165" r="7" fill="#F59E0B"/><text x="130" y="205" text-anchor="middle" fill="#C4D6EC" font-size="11">1954</text>
+          <circle cx="280" cy="165" r="7" fill="#F59E0B"/><text x="280" y="205" text-anchor="middle" fill="#C4D6EC" font-size="11">80 年代</text>
+          <circle cx="430" cy="165" r="7" fill="#F59E0B"/><text x="430" y="205" text-anchor="middle" fill="#C4D6EC" font-size="11">数字化</text>
+          <circle cx="580" cy="165" r="7" fill="#F59E0B"/><text x="580" y="205" text-anchor="middle" fill="#C4D6EC" font-size="11">智并联</text>
+          <text x="130" y="128" text-anchor="middle" fill="#9FB3CC" font-size="11">发轫起步</text>
+          <text x="280" y="128" text-anchor="middle" fill="#9FB3CC" font-size="11">并条机专业厂</text>
+          <text x="430" y="128" text-anchor="middle" fill="#9FB3CC" font-size="11">自动化转型</text>
+          <text x="580" y="128" text-anchor="middle" fill="#9FB3CC" font-size="11">数智化领跑</text>
+        </svg>
+      </div>
+      <p style="font-size:12.5px;color:var(--text-dim);margin-top:14px">展品含老物件征集、历代机型模型、行业标准制定档案与荣誉证书数字化陈列。</p>
+    </div>
+    <!-- 元宇宙：数字工厂在线预览 -->
+    <div id="m-metaverse-factory" class="m-page" style="display:none">
+      <h3>数字工厂 · 在线预览</h3>
+      <p class="msub">虚拟漫游智慧工厂 · 数据同频（DEMO 示意）</p>
+      <div style="border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#071222">
+        <svg viewBox="0 0 720 320" style="width:100%;display:block">
+          <rect width="720" height="320" style="fill:#081B33"/>
+          <text x="360" y="44" text-anchor="middle" fill="#9FB3CC" font-size="13">智慧工厂虚拟漫游</text>
+          <rect x="60" y="80" width="250" height="120" rx="8" fill="rgba(16,42,71,.6)" stroke="#5CB3FF"/>
+          <rect x="80" y="100" width="48" height="38" rx="4" fill="#0E4C92" stroke="#5CB3FF"/>
+          <rect x="140" y="100" width="48" height="38" rx="4" fill="#0E4C92" stroke="#5CB3FF"/>
+          <rect x="200" y="100" width="48" height="38" rx="4" fill="#0E4C92" stroke="#5CB3FF"/>
+          <text x="185" y="176" text-anchor="middle" fill="#8FA6C4" font-size="11">立加自动化产线</text>
+          <rect x="360" y="80" width="300" height="120" rx="8" fill="rgba(4,12,24,.65)" stroke="rgba(245,158,11,.4)"/>
+          <text x="510" y="106" text-anchor="middle" fill="#9FB3CC" font-size="11">数字孪生看板</text>
+          <text x="390" y="134" fill="#5CB3FF" font-size="12">产量 <tspan fill="#F59E0B" font-weight="bold">128</tspan></text>
+          <text x="500" y="134" fill="#5CB3FF" font-size="12">OEE <tspan fill="#10B981" font-weight="bold">91%</tspan></text>
+          <text x="390" y="158" fill="#5CB3FF" font-size="12">AGV <tspan fill="#10B981" font-weight="bold">6</tspan> 台</text>
+          <text x="500" y="158" fill="#5CB3FF" font-size="12">告警 <tspan fill="#10B981" font-weight="bold">0</tspan></text>
+          <circle cx="185" cy="250" r="7" fill="#10B981"/><line x1="185" y1="257" x2="185" y2="276" stroke="#10B981" stroke-width="3"/>
+          <path d="M185,276 q170,26 340,0" fill="none" stroke="rgba(245,158,11,.5)" stroke-width="2" stroke-dasharray="5 4"/>
+          <text x="360" y="302" text-anchor="middle" fill="#8FA6C4" font-size="11">自动巡航 · 拖动视角 · 点击设备查看实时数据</text>
+        </svg>
+      </div>
+      <p style="font-size:12.5px;color:var(--text-dim);margin-top:14px">正式版通过 WebGL 呈现可交互 3D 工厂，并接入 MES/SCADA 实时数据，模型状态与数据同频。</p>
+    </div>
+    <!-- 培训学院 -->
+    <div id="m-academy" class="m-page" style="display:none">
+      <h3>培训学院 · 在线学习</h3>
+      <p class="msub">选择课程开始学习，支持进度记录与学习档案（DEMO 演示）</p>
+      <div style="border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-bottom:14px;background:#071222;position:relative">
+        <div style="height:180px;display:grid;place-items:center;background:linear-gradient(135deg,rgba(27,122,212,.3),rgba(12,32,56,.4))">
+          <div style="width:62px;height:62px;border-radius:50%;background:linear-gradient(90deg,var(--accent),var(--accent2));display:grid;place-items:center;font-size:24px;color:#0A1626;cursor:pointer">▶</div>
+        </div>
+        <div style="padding:12px 16px;font-size:13px;color:var(--text-dim)">正在播放 · 并条机 TM 系列开机与操作规范（示意占位）</div>
+      </div>
+      <div style="display:grid;gap:8px;max-height:220px;overflow:auto">
+        <div class="rfq"><div class="r-t"><b>01 · 开机与操作规范</b><span>操作 · 18:30</span></div><span class="r-act" style="color:var(--accent)">已完成 100%</span></div>
+        <div class="rfq"><div class="r-t"><b>02 · 自调匀整工艺调试</b><span>工艺 · 26:00</span></div><span class="r-act" style="color:var(--primary-l)">学习进度 60%</span></div>
+        <div class="rfq"><div class="r-t"><b>03 · 日常维护与故障排查</b><span>维护 · 32:00</span></div><span class="r-act" style="color:var(--text-dim)">未开始</span></div>
+        <div class="rfq"><div class="r-t"><b>04 · 数字化纺纱数据应用</b><span>数字化 · 20:00</span></div><span class="r-act" style="color:var(--text-dim)">未开始</span></div>
+      </div>
+    </div>
+    <!-- 成功提示 -->
+    <div id="m-succ" class="succ-msg">
+      <div class="ok-ic">✓</div>
+      <h4>提交成功</h4>
+      <p>我们已收到您的请求，工作人员将尽快与您联系（DEMO 演示，未真实提交）。</p>
+      <button class="btn btn-ghost" style="margin-top:20px" onclick="closeModal()">关闭</button>
+    </div>
+  </div>
+</div>
+
+<div class="notice" id="notice"></div>
+
+<script>
+/* ============ 导航 ============ */
+const nav=document.getElementById('nav'),burger=document.getElementById('burger'),menu=document.getElementById('menu');
+addEventListener('scroll',()=>{nav.classList.toggle('scrolled',scrollY>40);document.querySelectorAll('.menu>li>a').forEach(a=>{a.classList.toggle('on',a.getAttribute('href')===('#'+currentSec()))})});
+burger.addEventListener('click',()=>menu.classList.toggle('open'));
+menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>menu.classList.remove('open')));
+function currentSec(){const s=['hero','culture','honor','factory','twin','metaverse','products','market','news','academy','portals'];let cur='hero';s.forEach(id=>{const el=document.getElementById(id);if(el&&el.getBoundingClientRect().top<innerHeight*0.5)cur=id});return cur}
+function go(id){document.getElementById(id).scrollIntoView({behavior:'smooth'})}
+
+/* ============ Hero 粒子 ============ */
+const cv=document.getElementById('particles'),ctx=cv.getContext('2d');let W,H,parts=[];
+function sizeCanvas(){W=cv.width=cv.offsetWidth;H=cv.height=cv.offsetHeight}
+function initParticles(){parts=[];const n=Math.min(90,Math.floor(W*H/16000));for(let i=0;i<n;i++)parts.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.45,vy:(Math.random()-.5)*.45,r:Math.random()*1.8+.6})}
+function drawParts(){ctx.clearRect(0,0,W,H);parts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,7);ctx.fillStyle='rgba(91,179,255,.7)';ctx.fill()});for(let i=0;i<parts.length;i++)for(let j=i+1;j<parts.length;j++){const a=parts[i],b=parts[j],d=Math.hypot(a.x-b.x,a.y-b.y);if(d<130){ctx.strokeStyle='rgba(91,179,255,'+(0.16*(1-d/130))+')';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke()}}requestAnimationFrame(drawParts)}
+sizeCanvas();initParticles();drawParts();addEventListener('resize',()=>{sizeCanvas();initParticles()});
+
+/* ============ 滚动显现 + 数字滚动 ============ */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');if(e.target.querySelector)countUp(e.target);io.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+function countUp(scope){scope.querySelectorAll('[data-count]').forEach(el=>{if(el.dataset.done)return;el.dataset.done=1;const target=+el.dataset.count,t0=performance.now();function tick(t){const p=Math.min(1,(t-t0)/1400);el.textContent=Math.floor(target*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(tick)}requestAnimationFrame(tick)})}
+/* 市场条动画 */
+const mBar=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.querySelectorAll('.bar i').forEach(b=>b.style.width=b.dataset.w+'%');mBar.unobserve(e.target)}}),{threshold:.3});
+document.querySelectorAll('.market-data').forEach(el=>mBar.observe(el));
+
+/* ============ 数字孪生视角切换 ============ */
+const views={overview:'svgOverview',warehouse:'svgWarehouse',line:'svgLine'};
+document.getElementById('twinViews').addEventListener('click',e=>{const b=e.target.closest('.tview');if(!b)return;document.querySelectorAll('.tview').forEach(x=>x.classList.remove('active'));b.classList.add('active');const v=b.dataset.v;document.querySelectorAll('#twinScene>svg').forEach(s=>s.style.display='none');document.getElementById(views[v]).style.display='block'});
+/* 实时数据模拟 */
+setInterval(()=>{const p=document.getElementById('mProd'),o=document.getElementById('mOee'),bt=document.getElementById('mBeat'),pw=document.getElementById('mPower');if(!p)return;p.textContent=Math.floor(128+Math.random()*4);o.textContent=(91+Math.random()*1.5).toFixed(1)+'%';bt.textContent=Math.floor(27+Math.random()*3);pw.textContent=Math.floor(4300+Math.random()*120)},2000);
+
+/* ============ 产品筛选 ============ */
+document.getElementById('prodFilter').addEventListener('click',e=>{const b=e.target.closest('.pf');if(!b)return;document.querySelectorAll('.pf').forEach(x=>x.classList.remove('active'));b.classList.add('active');const f=b.dataset.f;document.querySelectorAll('.prod-card').forEach(c=>{c.style.display=(f==='all'||c.dataset.cat===f)?'':'none'})});
+
+/* ============ 新闻 Tab ============ */
+document.getElementById('newsTabs').addEventListener('click',e=>{const b=e.target.closest('.nt');if(!b)return;document.querySelectorAll('.nt').forEach(x=>x.classList.remove('active'));b.classList.add('active');const n=b.dataset.n;document.querySelectorAll('.news-card').forEach(c=>{c.style.display=(c.dataset.news===n)?'':'none'})});
+
+/* ============ 元宇宙展区切换 ============ */
+const mt=document.getElementById('metaTabs');
+if(mt)mt.addEventListener('click',e=>{const b=e.target.closest('.mtab2');if(!b)return;document.querySelectorAll('.mtab2').forEach(x=>x.classList.remove('active'));b.classList.add('active');const h=b.dataset.hall;document.querySelectorAll('.hall').forEach(x=>x.classList.remove('active'));const target=document.getElementById('hall-'+h);if(target)target.classList.add('active')});
+
+/* ============ 全球地图点位 ============ */
+const pins=[
+ {name:'中国 · 天门（总部）',lon:113.1,lat:30.9,t:'core'},
+ {name:'中国 · 覆盖全国',lon:104,lat:36,t:'core'},
+ {name:'东南亚',lon:103,lat:12,t:'cov'},
+ {name:'南亚 · 印度',lon:78,lat:22,t:'cov'},
+ {name:'中亚 · 一带一路',lon:66,lat:42,t:'cov'},
+ {name:'中东',lon:47,lat:28,t:'cov'},
+ {name:'非洲 · 埃及',lon:31,lat:27,t:'cov'},
+ {name:'非洲 · 尼日利亚',lon:8,lat:9,t:'cov'},
+ {name:'非洲 · 南非',lon:25,lat:-28,t:'cov'},
+ {name:'南美 · 巴西',lon:-50,lat:-12,t:'cov'},
+ {name:'欧洲',lon:14,lat:50,t:'cov'},
+ {name:'俄罗斯',lon:62,lat:56,t:'cov'},
+];
+const mapSvg=document.getElementById('worldMap'),pinG=document.getElementById('mapPins'),lineG=document.getElementById('mapLines');
+function lalo(lon,lat){return [lon/360*1000, (90-lat)/180*500]}
+const home=lalo(113.1,30.9);
+pins.forEach(p=>{const[x,y]=lalo(p.lon,p.lat);const g=document.createElementNS('http://www.w3.org/2000/svg','g');g.innerHTML=`<circle cx="${x}" cy="${y}" r="14" fill="url(#glowB)" opacity=".5"><animate attributeName="r" values="8;20;8" dur="2.6s" repeatCount="indefinite"/></circle><circle cx="${x}" cy="${y}" r="4" fill="${p.t==='core'?'#F59E0B':'#2F8FF0'}"/><title>${p.name}</title>`;pinG.appendChild(g);if(p.t!=='core'){const l=document.createElementNS('http://www.w3.org/2000/svg','line');l.setAttribute('x1',home[0]);l.setAttribute('y1',home[1]);l.setAttribute('x2',x);l.setAttribute('y2',y);l.setAttribute('stroke','rgba(245,158,11,.22)');l.setAttribute('stroke-width','1');l.setAttribute('stroke-dasharray','3 3');lineG.appendChild(l)}});
+
+/* ============ 弹窗 ============ */
+function openModal(which){document.querySelectorAll('.m-page').forEach(p=>p.style.display='none');document.getElementById('m-'+which).style.display='block';document.getElementById('modalMask').classList.add('show');document.body.style.overflow='hidden'}
+function closeModal(){document.getElementById('modalMask').classList.remove('show');document.body.style.overflow=''}
+document.getElementById('modalMask').addEventListener('click',e=>{if(e.target===document.getElementById('modalMask'))closeModal()});
+function switchTab(btn,id){const box=btn.closest('.m-page');box.querySelectorAll('.mtab').forEach(t=>t.classList.remove('active'));btn.classList.add('active');box.querySelectorAll('.tabp').forEach(p=>p.style.display='none');document.getElementById(id).style.display='block'}
+function mockLogin(next){notice('登录成功（DEMO），已载入客户档案');setTimeout(()=>switchTab(document.querySelector('#m-customer .mtab:nth-child(3)'),next),500)}
+function submitSvc(){notice('提交成功（DEMO），请到"服务进度"查看状态');setTimeout(()=>{const m=document.querySelector('.modal');const all=m.querySelector('.m-page');all.style.display='none';document.getElementById('m-succ').style.display='block'},400)}
+function rfqAct(el){el.textContent='已响应 ✓';el.style.color='#10B981';notice('响应成功（DEMO），请在"绩效评级"查看更新')}
+function notice(msg){const n=document.getElementById('notice');n.textContent=msg;n.classList.add('show');clearTimeout(n._t);n._t=setTimeout(()=>n.classList.remove('show'),2400)}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+</script>
+</body>
+</html>
