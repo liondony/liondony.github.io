@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>板件车间1至8月生产经营状况分析报告</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+body {font-family: 'Noto Sans SC', system-ui, sans-serif;}
+.section-card {box-shadow: 0 2px 12px rgba(0,0,0,0.08);}
+.gradient-header {background: linear-gradient(135deg, #0f3460 0%, #16539e 100%);}
+.warning-bg {background-color: #fff7e6;border-left:4px solid #fa8c16;}
+.success-bg {background-color:#f0fff4;border-left:4px solid #389e0d;}
+.danger-bg {background-color:#fff2f0;border-left:4px solid #f5222d;}
+</style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+<header class="gradient-header text-white py-10 px-6">
+<div class="max-w-7xl mx-auto">
+<h1 class="text-[clamp(1.8rem,3vw,2.8rem)] font-bold">板件车间1至8月生产经营状况分析报告</h1>
+<p class="mt-2 text-lg opacity-90">湖北天门纺织机械股份有限公司｜2026年9月</p>
+<div class="mt-6 flex flex-wrap gap-3">
+<span class="bg-white/20 rounded-full px-4 py-1 text-sm">人员结构管理</span>
+<span class="bg-white/20 rounded-full px-4 py-1 text-sm">日常生产经营</span>
+<span class="bg-white/20 rounded-full px-4 py-1 text-sm">核心设备运营</span>
+<span class="bg-white/20 rounded-full px-4 py-1 text-sm">重点技改项目</span>
+<span class="bg-white/20 rounded-full px-4 py-1 text-sm">深度分析 & 整改方案</span>
+</div>
+</div>
+</header>
+
+<main class="max-w-7xl mx-auto px-4 py-10 space-y-12">
+<section class="section-card bg-white rounded-xl p-7">
+<h2 class="text-2xl font-bold text-blue-800 border-b-2 border-blue-200 pb-3 mb-6">01 人员结构管理</h2>
+<div class="grid md:grid-cols-2 gap-8">
+<div>
+<h3 class="font-semibold text-lg mb-3">岗位人员概况</h3>
+<ul class="list-disc pl-5 space-y-1 text-gray-700">
+<li>管理、统计、工艺、数控操作工、钣金工、焊工、打磨工岗位配置齐全，班组架构完整，覆盖钣金全工序。</li>
+<li>1‑7月固定在岗38人；8月焊工调岗新增1人，总人数39人，当日实际出勤38人，1人病假。</li>
+</ul>
+<div class="mt-4">
+<table class="w-full text-sm border-collapse border border-gray-200">
+<thead>
+<tr class="bg-gray-100">
+<th class="border p-2">月份</th>
+<th class="border p-2">管理</th>
+<th class="border p-2">统计</th>
+<th class="border p-2">工艺</th>
+<th class="border p-2">数控</th>
+<th class="border p-2">钣金</th>
+<th class="border p-2">焊工</th>
+<th class="border p-2">打磨</th>
+</tr>
+</thead>
+<tbody>
+<tr><td class="border p-2">1‑7月</td><td class="border p-2">2</td><td class="border p-2">1</td><td class="border p-2">5</td><td class="border p-2">8</td><td class="border p-2">7</td><td class="border p-2">13</td><td class="border p-2">2</td></tr>
+<tr><td class="border p-2">8月</td><td class="border p-2">2</td><td class="border p-2">1</td><td class="border p-2">5</td><td class="border p-2">8</td><td class="border p-2">7</td><td class="border p-2">14</td><td class="border p-2">2</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div>
+<h3 class="font-semibold text-lg mb-3">📊人员维度深度分析</h3>
+<div class="warning-bg p-4 rounded mb-3">
+<p class="font-medium">现存问题：</p>
+<ul class="list-disc pl-5 mt-2 text-sm">
+<li>整体人员数量稳定，但工时持续走高，生产任务完成率波动剧烈，说明存在人效匹配失衡。</li>
+<li>焊工岗位小幅增加，但焊接质量压力仍然较大，技能梯队建设不足。</li>
+<li>缺少岗位技能分级、轮岗培训机制，多能工储备不足，病假、事假容易造成局部工序卡点。</li>
+</ul>
+</div>
+<div class="success-bg p-4 rounded">
+<p class="font-medium">整改方案：</p>
+<ul class="list-disc pl-5 mt-2 text-sm">
+<li>建立多能工培养计划，重点培养数控、钣金、打磨交叉轮岗，降低单点岗位缺人风险。</li>
+<li>焊工岗位实施技能分级，建立师徒制，稳定焊接工序输出质量。</li>
+<li>统计各岗位有效工时，核算人均产出，识别低效岗位，优化排班。</li>
+<li>完善病假、顶岗应急预案，避免单人岗位缺位影响整条流水线。</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+<section class="section-card bg-white rounded-xl p-7">
+<h2 class="text-2xl font-bold text-blue-800 border-b-2 border-blue-200 pb-3 mb-6">02 日常生产经营</h2>
+<div class="grid md:grid-cols-2 gap-8">
+<div>
+<h3 class="font-semibold text-lg mb-3">月度工时数据</h3>
+<canvas id="workHourChart" height="260"></canvas>
+<div class="mt-4 text-sm text-gray-600">
+<p>工时趋势：1月24921h → 8月27463.5h，整体工时逐月走高，车间实际劳动投入持续增加。</p>
+</div>
+</div>
+<div>
+<h3 class="font-semibold text-lg mb-3">生产经营深度分析</h3>
+<div class="danger-bg p-4 rounded mb-3">
+<p class="font-medium">核心矛盾：工时持续上涨，但任务完成率出现明显下滑（6‑8月完成率走低）</p>
+<ul class="list-disc pl-5 mt-2 text-sm">
+<li>投入工时不断增加，但产出效率未同步提升，存在无效工时、等待工时。</li>
+<li>机型多，TM13/TM17/TM11等多机型混线生产，换型频繁，造成生产损耗。</li>
+<li>零活工时长期存在，挤占主力机型产能，计划排产的优先级管控不足。</li>
+<li>生产计划衔接可能存在问题，物料、图纸、工艺准备前置不足，现场待料停工。</li>
+</ul>
+</div>
+<div class="success-bg p-4 rounded">
+<p class="font-medium">整改方案：</p>
+<ul class="list-disc pl-5 mt-2 text-sm">
+<li>开展工时分析，区分有效生产工时、等待工时、返工工时，定位工时浪费环节。</li>
+<li>优化排产，同机型合并批量生产，减少频繁换型，降低换型损耗。</li>
+<li>管控零活工时占比，建立零活审批机制，不占用主力订单产能。</li>
+<li>强化产前准备，图纸、工艺、物料提前齐套，减少现场停工等待。</li>
+<li>按月度拆解完成率指标，把指标落实到班组，建立完成率复盘例会。</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="mt-8">
+<h3 class="font-semibold text-lg mb-3">主要机型工时分布特点</h3>
+<p class="text-gray-700 text-sm">TM13、TM17、TM11为消耗工时最高的主力机型；多小批量机型并行生产，增加车间组织难度，生产组织复杂度高。</p>
+</div>
+</section>
+
+<section class="section-card bg-white rounded-xl p-7">
+<h2 class="text-2xl font-bold text-blue-800 border-b-2 border-blue-200 pb-3 mb-6">03 核心设备运营</h2>
+<div class="grid md:grid-cols-2 gap-8">
+<div>
+<h3 class="font-semibold text-lg mb-3">激光下料柔性线产能趋势</h3>
+<canvas id="laserChart" height="260"></canvas>
+<div class="mt-3 text-sm text-gray-600">
+<p>切割张数3‑7月维持高位，8月有所回落；出光时长、切割时长整体处于较高负荷，设备满负荷运行。</p>
+</div>
+<div class="mt-4">
+<h4 class="font-medium">机器人自动折弯单元</h4>
+<p class="text-sm mt-1">折弯件数8月达到2927件为年内新高；累计优化113种零件，折弯刀数42963刀，自动化折弯产能释放明显。</p>
+</div>
+</div>
+<div>
+<h3 class="font-semibold text-lg mb-3">设备运营深度分析</h3>
+<div class="warning-bg p-4 rounded mb-3">
+<p class="font-medium">现存问题：</p>
+<ul class="list-disc pl-5 mt-2 text-sm">
+<li>激光设备长期高负荷，需要关注设备保养维护，避免突发故障停机。</li>
+<li>立库原材料板材品类多，库存波动大，需要做好物料计划，防止缺料或呆滞物料。</li>
+<li>机器人折弯虽然产能提升，但可适配零件种类仍然有限，大量零件依赖人工折弯，自动化覆盖率仍有提升空间。</li>
+<li>设备运行数据有采集，但缺少OEE设备综合效率统计，无法精准衡量设备真实利用水平。</li>
+</ul>
+</div>
+<div class="success-bg p-4 rounded">
+<p class="font-medium">整改方案：</p>
+<ul class="list-disc pl-5 mt-2 text-sm">
+<li>建立激光设备预防性维保计划，利用生产间隙做保养，减少故障停机损失。</li>
+<li>统计设备OEE（设备综合效率），把切割张数、出光时长转化为效率指标。</li>
+<li>持续扩大机器人折弯适配零件清单，将更多标准化零件导入自动化折弯单元。</li>
+<li>立库板材库存动态监控，结合生产计划做物料需求预测，减少呆滞板材，同时避免缺料停机。</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+<section class="section-card bg-white rounded-xl p-7">
+<h2 class="text-2xl font-bold text-blue-800 border-b-2 border-blue-200 pb-3 mb-6">04 车间重点技改项目</h2>
+<div class="grid md:grid-cols-3 gap-6">
+<div class="border rounded-lg p-5 bg-gray-50">
+<h3 class="font-bold mb-2">技改1：机器人手抓新增优化</h3>
+<p class="text-sm text-gray‑700">目标：优化折弯搬运抓取，兼容多规格钣金件，降低工件划伤变形，提升自动化混线生产。</p>
+<div class="mt-3 text-xs text-gray‑600">
+当前进度：<br/>
+✔折弯程序、运动路径优化<br/>
+✔折弯零件归类分析<br/>
+⏳优化手抓本体、对接外部厂家
+</div>
+</div>
+<div class="border rounded-lg p-5 bg-gray-50">
+<h3 class="font-bold mb-2">技改2：焊接机器人作业改造</h3>
+<p class="text-sm text-gray‑700">目标：引入焊接机器人，消除人工焊接质量波动，降低返修、补焊成本，提升焊接稳定性。</p>
+<div class="mt-3 text-xs text-gray‑600">
+当前进度：<br/>
+⏳焊接零件工艺梳理<br/>
+⏳对外技术交流<br/>
+⏳配套工装设计制作
+</div>
+</div>
+<div class="border rounded-lg p-5 bg-gray-50">
+<h3 class="font-bold mb-2">技改3：打磨除尘系统建设</h3>
+<p class="text-sm text-gray‑700">目标：全域粉尘治理，改善车间环境，保护员工职业健康，减少工件粉尘瑕疵返工。</p>
+<div class="mt-3 text-xs text-gray‑600">
+当前进度：<br/>
+✔已完成第一版标书编制<br/>
+⏳后续招标实施阶段
+</div>
+</div>
+</div>
+
+<div class="mt-8">
+<h3 class="font-semibold text-lg mb-3">技改项目深度分析与推进建议</h3>
+<div class="warning-bg p-4 rounded mb-3">
+<p class="font-medium">现存风险点：</p>
+<ul class="list-disc pl-5 mt-2 text-sm">
+<li>三项技改均处于前期阶段，没有明确的时间节点、里程碑与责任到人，存在延期风险。</li>
+<li>技改与当前生产并行，要避免技改施工干扰现有正常生产秩序。</li>
+<li>焊接机器人需要大量前期零件工艺梳理工作，前期梳理质量直接决定后期机器人利用率。</li>
+<li>除尘系统属于环保安全类项目，需要同步考虑后期运维方案。</li>
+</ul>
+</div>
+<div class="success-bg p-4 rounded">
+<p class="font-medium">整改推进方案：</p>
+<ul class="list-disc pl-5 mt-2 text-sm">
+<li>每个技改项目输出项目计划表，明确里程碑节点、责任人、预计完成时间，按月跟踪技改进度。</li>
+<li>机器人手抓优化：优先选择批量最大零件进行验证，小步迭代，快速验证效果。</li>
+<li>焊接机器人：零件梳理阶段同步输出可焊接零件清单，作为后期选型依据，避免设备买回来无零件可用。</li>
+<li>除尘系统：标书阶段明确运维方案、滤芯更换周期，同步核算后期运营成本。</li>
+<li>技改实施阶段做好生产错峰，制定施工期间生产保障预案，降低对现有产能冲击。</li>
+</ul>
+</div>
+</div>
+</section>
+
+<section class="section-card bg-white rounded-xl p-7">
+<h2 class="text-2xl font-bold text-blue-800 border-b-2 border-blue-200 pb-3 mb-6">综合研判 & 总体整改方案汇总</h2>
+<div class="space-y-5">
+<div>
+<h3 class="text-lg font-semibold">一、车间整体现状总结</h3>
+<p class="text-gray‑700">
+板件车间人员队伍整体稳定，激光下料、机器人折弯等自动化设备基础条件较好；技改方向贴合车间痛点。但突出矛盾为：<strong>工时投入持续走高，生产完成率下滑，人效、设备效率没有充分释放；多机型混线生产组织难度大；重点技改还处于前期，尚未形成实际产能收益。</strong>
+</p>
+</div>
+<div>
+<h3 class="text-lg font-semibold">二、总体改进重点方向</h3>
+<ol class="list-decimal pl-6 space‑y‑2 text‑gray‑700">
+<li><strong>效率提升：</strong>做实工时分析，减少等待、返工、频繁换型带来的无效工时，提升人均产出。</li>
+<li><strong>计划排产：</strong>优化生产排产、产前齐套检查，控制零活工时挤占主力订单产能。</li>
+<li><strong>人员梯队：</strong>推进多能工，完善焊工技能建设，建立岗位顶岗应急机制。</li>
+<li><strong>设备管理：</strong>推进预防性维保，统计OEE，持续扩大自动化折弯覆盖零件，做好板材库存管控。</li>
+<li><strong>技改管控：</strong>三个技改项目建立明确里程碑，按月督办，确保技改落地后真正转化为质量、效率收益。</li>
+<li><strong>复盘机制：</strong>建立车间月度经营分析会，对完成率、工时、设备、技改完成情况进行闭环复盘。</li>
+</ol>
+</div>
+<div class="bg-blue‑50 p‑4 rounded‑lg mt‑4">
+<p class="italic text‑gray‑600 text‑sm">专此汇报，恳求指正。</p>
+</div>
+</div>
+</section>
+</main>
+
+<footer class="bg-slate-800 text-white py-6 mt-12">
+<div class="max-w-7xl mx-auto px-4 text-center text-sm opacity-80">
+湖北天门纺织机械股份有限公司 · 板件车间｜当民族工业精益表率 · 做纺织装备领先企业
+</div>
+</footer>
+
+<script>
+const workHourCtx = document.getElementById('workHourChart').getContext('2d');
+new Chart(workHourCtx, {
+type: 'bar',
+data:{
+labels:['1月','2月','3月','4月','5月','6月','7月','8月'],
+datasets:[{
+label:'月度生产工时(h)',
+data:[24921,19683,23738,25451,25550,26703,26694.7,27463.5],
+backgroundColor:'#16539e'
+}]
+},
+options:{
+responsive:true,
+plugins:{title:{display:true,text:"车间月度总工时趋势"}}
+}
+});
+
+const laserCtx = document.getElementById('laserChart').getContext('2d');
+new Chart(laserCtx,{
+type:'line',
+data:{
+labels:['3月','4月','5月','6月','7月','8月'],
+datasets:[{
+label:'激光总切割张数(张)',
+data:[1917,2503,1999,2103,2490,1744],
+borderColor:'#dc3545',
+tension:0.2,
+fill:false
+}]
+},
+options:{
+responsive:true,
+plugins:{title:{display:true,text:"激光下料柔性线切割张数趋势"}}
+}
+});
+</script>
+</body>
+</html>
