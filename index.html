@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to Liondony's website</title>
+    <title>个人文库 | Liondony</title>
     <style>
         * {
             margin: 0;
@@ -11,92 +11,140 @@
             box-sizing: border-box;
             font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
         }
+
         body {
             min-height: 100vh;
-            background: linear-gradient(135deg, #121826, #20293d);
-            color: #e2e8f0;
-            padding: 48px 24px;
+            background:
+                radial-gradient(circle at 20% 20%, rgba(41, 98, 255, 0.12), transparent 40%),
+                radial-gradient(circle at 80% 30%, rgba(168, 85, 247, 0.10), transparent 40%),
+                radial-gradient(circle at 40% 85%, rgba(20, 184, 166, 0.09), transparent 45%),
+                radial-gradient(circle at 85% 88%, rgba(249, 115, 22, 0.08), transparent 40%),
+                #0f141e;
+            background-attachment: fixed;
+            color: #cbd5e1;
+            padding: 64px 20px;
         }
-        .wrap {
+
+        .container {
             max-width: 720px;
             margin: 0 auto;
         }
-        header {
+
+        .header {
             text-align: center;
             margin-bottom: 48px;
         }
-        h1 {
-            font-size: 2.3rem;
-            color: #ffffff;
+
+        .header h1 {
+            font-size: 2.1rem;
             letter-spacing: 1px;
+            color: #f1f5f9;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
             margin-bottom: 10px;
         }
-        .subtitle {
+
+        .header p {
             color: #94a3b8;
-            font-size: 1rem;
+            font-size: 0.94rem;
         }
-        .card-container {
-            display: grid;
-            gap: 24px;
+
+        .doc-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
         }
-        .card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 36px;
-            transition: 0.25s ease;
-            cursor: pointer;
+
+        .glass-card {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 20px 24px;
+            transition: 0.28s ease;
         }
-        .card:hover {
-            background: rgba(255,255,255,0.09);
-            transform: translateY(-4px);
-            border-color: rgba(255,255,255,0.18);
+
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.07);
+            border-color: rgba(255, 255, 255, 0.14);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 26px rgba(0,0,0,0.25);
         }
-        .card a {
+
+        .glass-card a {
+            display: flex;
+            align-items: center;
+            gap: 16px;
             text-decoration: none;
-            color: inherit;
-            display:block;
+            color: #e2e8f0;
+            font-size: 1.04rem;
         }
-        .card h2 {
-            font-size: 1.5rem;
-            margin-bottom: 12px;
-            display:flex;
-            align-items:center;
+
+        .icon {
+            font-size: 24px;
+            width: 30px;
+            text-align: center;
+            transition: transform 0.25s ease;
+        }
+
+        .glass-card:hover .icon {
+            transform: scale(1.12);
+        }
+
+        /* 分页区域 */
+        .pagination-wrap {
+            margin-top: 36px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             gap:10px;
         }
-        .card p {
-            color:#94a3b8;
-            line-height:1.6;
+        .page-btn{
+            padding:8px 16px;
+            border-radius:8px;
+            border:1px solid rgba(255,255,255,0.1);
+            background:rgba(255,255,255,0.04);
+            color:#cbd5e1;
+            cursor:pointer;
+            transition:0.2s;
         }
+        .page-btn:hover:not(:disabled){
+            background:rgba(255,255,255,0.08);
+        }
+        .page-btn:disabled{
+            opacity:0.35;
+            cursor:not-allowed;
+        }
+        .page-info{
+            color:#94a3b8;
+            font-size:0.9rem;
+        }
+
         footer {
+            margin-top: 80px;
             text-align: center;
-            margin-top: 60px;
             color: #64748b;
             font-size: 0.86rem;
         }
     </style>
 </head>
 <body>
-<div class="wrap">
-    <header>
-        <h1>Welcome to Liondony's website</h1>
-        <p class="subtitle">Personal Document Library</p>
-    </header>
+<div class="container">
+    <div class="header">
+        <h1>🗄️ 个人文库</h1>
+        <p>知识沉淀 · 持续收录</p>
+    </div>
 
-    <div class="card-container">
-        <div class="card" ">
-             <a href="work.html">
-        
-                <h2>📁 工作文档</h2>
-                <p>各类工作资料、方案、记录汇总</p>
-    
-        </div>
-        <div class="card">
-            <a href="study.html">
-                <h2>📚 个人学习</h2>
-                <p>学习笔记、知识文档、思维导图汇总</p>
-            </a>
-        </div>
+    <div class="doc-list" id="docList">
+        <!-- JS动态渲染卡片，不要在这里写卡片 -->
+    </div>
+
+    <div class="pagination-wrap">
+        <button class="page-btn" id="prevBtn">上一页</button>
+        <span class="page-info" id="pageInfo"></span>
+        <button class="page-btn" id="nextBtn">下一页</button>
     </div>
 
     <footer>
@@ -104,6 +152,68 @@
     </footer>
 </div>
 
+<script>
+// =========配置区==========
+const pageSize = 8; // 每页展示多少条文档，可自行修改
+// 新增文档在这里添加对象即可，不用改HTML
+const docData = [
+    {icon:"📋", title:"逻辑思维方法概览", href:"逻辑思维方法概览.html", color:"#38bdf8"},
+    {icon:"💭", title:"顶层人士36个顶级思维", href:"顶层人士36个顶级思维.html", color:"#a78bfa"},
+    {icon:"✨", title:"梁文锋DeepSeek投资者交流会", href:"梁文锋DeepSeek投资者交流会.html", color:"#2dd4bf"},
+    {icon:"📖", title:"私有化AI大模型解决方案", href:"天门纺机私有化AI大模型解决方案.html", color:"#fbbf24"},
+    {icon:"📖", title:"智能立体仓库库存管理专项整改报告", href:"智能立体仓库库存管理专项整改报告.html", color:"#fbbf24"},
+    {icon:"📖", title:"清洁机器人对比汇总表", href:"清洁机器人对比汇总表.html", color:"#fbbf24"},
+    {icon:"📖", title:"天门纺机官网Demo", href:"tmfj_new_site_demo.html", color:"#fbbf24"},
+    // 示例，复制下面这条新增更多文档
+    // {icon:"📖", title:"文档名称", href:"study/xxx.html", color:"#fbbf24"},
+];
+// =========================
 
+let currentPage = 1;
+const total = docData.length;
+const totalPage = Math.ceil(total / pageSize);
+
+const docListEl = document.getElementById('docList');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+const pageInfo = document.getElementById('pageInfo');
+
+function render(){
+    docListEl.innerHTML = '';
+    const start = (currentPage -1)*pageSize;
+    const sliceData = docData.slice(start, start + pageSize);
+
+    sliceData.forEach(item=>{
+        const div = document.createElement('div');
+        div.className = "glass-card";
+        div.innerHTML = `
+            <a href="${item.href}">
+                <span class="icon" style="color:${item.color}">${item.icon}</span>
+                <span>${item.title}</span>
+            </a>
+        `;
+        docListEl.appendChild(div);
+    });
+
+    pageInfo.innerText = `${currentPage} / ${totalPage}`;
+    prevBtn.disabled = currentPage <= 1;
+    nextBtn.disabled = currentPage >= totalPage;
+}
+
+prevBtn.onclick = ()=>{
+    if(currentPage>1){
+        currentPage--;
+        render();
+    }
+};
+nextBtn.onclick = ()=>{
+    if(currentPage<totalPage){
+        currentPage++;
+        render();
+    }
+};
+
+render();
+</script>
 </body>
 </html>
